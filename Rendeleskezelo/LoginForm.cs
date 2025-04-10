@@ -15,6 +15,9 @@ namespace Rendeleskezelo
         public LoginForm()
         {
             InitializeComponent();
+
+
+            this.StartPosition = FormStartPosition.CenterScreen;
         }
 
         private void LoginForm_Load(object sender, EventArgs e)

@@ -5,6 +5,8 @@ namespace Rendeleskezelo
         public MainForm()
         {
             InitializeComponent();
+
+            this.StartPosition = FormStartPosition.CenterScreen;
         }
     }
 }
