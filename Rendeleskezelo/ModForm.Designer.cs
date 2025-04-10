@@ -46,6 +46,8 @@
             comboBoxStatusz = new ComboBox();
             buttonCancel = new Button();
             buttonSave = new Button();
+            textBoxTermekek = new TextBox();
+            textBoxMennyiseg = new TextBox();
             SuspendLayout();
             // 
             // label1
@@ -197,11 +199,27 @@
             buttonSave.Text = "Mentés";
             buttonSave.UseVisualStyleBackColor = true;
             // 
+            // textBoxTermekek
+            // 
+            textBoxTermekek.Location = new Point(169, 344);
+            textBoxTermekek.Name = "textBoxTermekek";
+            textBoxTermekek.Size = new Size(203, 23);
+            textBoxTermekek.TabIndex = 18;
+            // 
+            // textBoxMennyiseg
+            // 
+            textBoxMennyiseg.Location = new Point(169, 392);
+            textBoxMennyiseg.Name = "textBoxMennyiseg";
+            textBoxMennyiseg.Size = new Size(203, 23);
+            textBoxMennyiseg.TabIndex = 19;
+            // 
             // ModForm
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(397, 496);
+            Controls.Add(textBoxMennyiseg);
+            Controls.Add(textBoxTermekek);
             Controls.Add(buttonSave);
             Controls.Add(buttonCancel);
             Controls.Add(comboBoxStatusz);
@@ -247,5 +265,7 @@
         private ComboBox comboBoxStatusz;
         private Button buttonCancel;
         private Button buttonSave;
+        private TextBox textBoxTermekek;
+        private TextBox textBoxMennyiseg;
     }
 }
