@@ -16,5 +16,28 @@ namespace Rendeleskezelo
         {
             InitializeComponent();
         }
+
+        private void LoginForm_Load(object sender, EventArgs e)
+        {
+
+        }
+
+        private void buttonLogin_Click(object sender, EventArgs e)
+        {
+            string username = txtUsername.Text;
+            string password = txtPassword.Text;
+
+            // Egyszerű hitelesítés
+            if (username == "admin" && password == "password123")
+            {
+                this.DialogResult = DialogResult.OK;
+                this.Close();
+            }
+            else
+            {
+                lblError.Text = "Hibás felhasználónév vagy jelszó!";
+                lblError.Visible = true;
+            }
+        }
     }
 }

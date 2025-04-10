@@ -28,22 +28,24 @@
         /// </summary>
         private void InitializeComponent()
         {
-            button1 = new Button();
+            buttonLogin = new Button();
             label1 = new Label();
             label2 = new Label();
             label3 = new Label();
-            textBox1 = new TextBox();
-            textBox2 = new TextBox();
+            txtUsername = new TextBox();
+            txtPassword = new TextBox();
+            lblError = new Label();
             SuspendLayout();
             // 
-            // button1
+            // buttonLogin
             // 
-            button1.Location = new Point(46, 175);
-            button1.Name = "button1";
-            button1.Size = new Size(291, 23);
-            button1.TabIndex = 0;
-            button1.Text = "Bejelentkezés";
-            button1.UseVisualStyleBackColor = true;
+            buttonLogin.Location = new Point(56, 187);
+            buttonLogin.Name = "buttonLogin";
+            buttonLogin.Size = new Size(281, 23);
+            buttonLogin.TabIndex = 0;
+            buttonLogin.Text = "Bejelentkezés";
+            buttonLogin.UseVisualStyleBackColor = true;
+            buttonLogin.Click += buttonLogin_Click;
             // 
             // label1
             // 
@@ -72,44 +74,59 @@
             label3.TabIndex = 3;
             label3.Text = "Kérlek jelentkezz be a fiókodba!";
             // 
-            // textBox1
+            // txtUsername
             // 
-            textBox1.Location = new Point(152, 79);
-            textBox1.Name = "textBox1";
-            textBox1.Size = new Size(185, 23);
-            textBox1.TabIndex = 4;
+            txtUsername.Location = new Point(152, 79);
+            txtUsername.Name = "txtUsername";
+            txtUsername.Size = new Size(185, 23);
+            txtUsername.TabIndex = 4;
             // 
-            // textBox2
+            // txtPassword
             // 
-            textBox2.Location = new Point(152, 126);
-            textBox2.Name = "textBox2";
-            textBox2.Size = new Size(185, 23);
-            textBox2.TabIndex = 5;
+            txtPassword.Location = new Point(152, 126);
+            txtPassword.Name = "txtPassword";
+            txtPassword.Size = new Size(185, 23);
+            txtPassword.TabIndex = 5;
+            txtPassword.UseSystemPasswordChar = true;
+            // 
+            // lblError
+            // 
+            lblError.AutoSize = true;
+            lblError.ForeColor = Color.Red;
+            lblError.Location = new Point(152, 164);
+            lblError.Name = "lblError";
+            lblError.Size = new Size(32, 15);
+            lblError.TabIndex = 6;
+            lblError.Text = "Error";
+            lblError.Visible = false;
             // 
             // LoginForm
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(390, 224);
-            Controls.Add(textBox2);
-            Controls.Add(textBox1);
+            ClientSize = new Size(390, 222);
+            Controls.Add(lblError);
+            Controls.Add(txtPassword);
+            Controls.Add(txtUsername);
             Controls.Add(label3);
             Controls.Add(label2);
             Controls.Add(label1);
-            Controls.Add(button1);
+            Controls.Add(buttonLogin);
             Name = "LoginForm";
             Text = "Bejelentkezés";
+            Load += LoginForm_Load;
             ResumeLayout(false);
             PerformLayout();
         }
 
         #endregion
 
-        private Button button1;
+        private Button buttonLogin;
         private Label label1;
         private Label label2;
         private Label label3;
-        private TextBox textBox1;
-        private TextBox textBox2;
+        private TextBox txtUsername;
+        private TextBox txtPassword;
+        private Label lblError;
     }
 }
