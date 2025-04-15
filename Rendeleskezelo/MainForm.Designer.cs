@@ -68,6 +68,7 @@
             buttonModOrder.TabIndex = 2;
             buttonModOrder.Text = "Módosítás";
             buttonModOrder.UseVisualStyleBackColor = true;
+            buttonModOrder.Click += buttonModOrder_Click;
             // 
             // buttonDelOrder
             // 
