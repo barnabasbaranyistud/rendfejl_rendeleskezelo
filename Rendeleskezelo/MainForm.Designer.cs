@@ -28,7 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
-            dataGridView1 = new DataGridView();
+            dataGridViewOrders = new DataGridView();
             buttonAddOrder = new Button();
             buttonModOrder = new Button();
             buttonDelOrder = new Button();
@@ -39,17 +39,17 @@
             label1 = new Label();
             label2 = new Label();
             statusStrip = new StatusStrip();
-            ((System.ComponentModel.ISupportInitialize)dataGridView1).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)dataGridViewOrders).BeginInit();
             SuspendLayout();
             // 
-            // dataGridView1
+            // dataGridViewOrders
             // 
-            dataGridView1.BackgroundColor = SystemColors.Window;
-            dataGridView1.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dataGridView1.Location = new Point(12, 147);
-            dataGridView1.Name = "dataGridView1";
-            dataGridView1.Size = new Size(723, 428);
-            dataGridView1.TabIndex = 0;
+            dataGridViewOrders.BackgroundColor = SystemColors.Window;
+            dataGridViewOrders.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            dataGridViewOrders.Location = new Point(12, 147);
+            dataGridViewOrders.Name = "dataGridViewOrders";
+            dataGridViewOrders.Size = new Size(723, 428);
+            dataGridViewOrders.TabIndex = 0;
             // 
             // buttonAddOrder
             // 
@@ -154,17 +154,18 @@
             Controls.Add(buttonDelOrder);
             Controls.Add(buttonModOrder);
             Controls.Add(buttonAddOrder);
-            Controls.Add(dataGridView1);
+            Controls.Add(dataGridViewOrders);
             Name = "MainForm";
             Text = "Rendelések kezelése";
-            ((System.ComponentModel.ISupportInitialize)dataGridView1).EndInit();
+            Load += MainForm_Load;
+            ((System.ComponentModel.ISupportInitialize)dataGridViewOrders).EndInit();
             ResumeLayout(false);
             PerformLayout();
         }
 
         #endregion
 
-        private DataGridView dataGridView1;
+        private DataGridView dataGridViewOrders;
         private Button buttonAddOrder;
         private Button buttonModOrder;
         private Button buttonDelOrder;

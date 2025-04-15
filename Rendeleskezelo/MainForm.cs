@@ -12,7 +12,7 @@ namespace Rendeleskezelo
         private void buttonModOrder_Click(object sender, EventArgs e)
         {
             ModForm modForm = new ModForm();
-            if(modForm.ShowDialog() == DialogResult.OK)
+            if (modForm.ShowDialog() == DialogResult.OK)
             {
                 // Handle the case when the dialog result is OK
             }
@@ -21,5 +21,14 @@ namespace Rendeleskezelo
                 // Handle the case when the dialog result is not OK
             }
         }
+        private void MainForm_Load(object sender, EventArgs e)
+        {
+
+        }
+
+        private void LoadData()
+        {
+            
+        }   
     }
 }
