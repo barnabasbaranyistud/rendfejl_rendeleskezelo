@@ -12,10 +12,12 @@ namespace Rendeleskezelo
     {
         private readonly HttpClient _client;
         private readonly string _baseUrl;
+        private readonly string _apiKey;
 
         public Api(string baseUrl, string apiKey)
         {
             _baseUrl = baseUrl.TrimEnd('/');
+            _apiKey = apiKey;
             _client = new HttpClient();
             _client.BaseAddress = new Uri(_baseUrl);
             _client.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue("application/json"));
@@ -24,15 +26,18 @@ namespace Rendeleskezelo
 
         public ApiResponse<List<OrderDTO>> OrdersFindAll()
         {
-            string endpoint = "orders";
+            string endpoint = $"orders?key={_apiKey}";
             HttpResponseMessage response = _client.GetAsync(endpoint).Result;
 
             if (!response.IsSuccessStatusCode)
             {
+                string errorContent = response.Content.ReadAsStringAsync().Result;
+                MessageBox.Show($"API hiba: {response.StatusCode}\n\n{errorContent}");
                 return new ApiResponse<List<OrderDTO>> { Content = null };
             }
 
             string json = response.Content.ReadAsStringAsync().Result;
+
             var parsed = JsonSerializer.Deserialize<ApiResponse<List<OrderDTO>>>(json, new JsonSerializerOptions
             {
                 PropertyNameCaseInsensitive = true
