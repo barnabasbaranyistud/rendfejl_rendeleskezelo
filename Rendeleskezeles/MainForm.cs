@@ -2,6 +2,7 @@
 using System;
 using System.Linq;
 using System.Windows.Forms;
+using System.Windows.Forms.VisualStyles;
 
 namespace Rendeleskezelo
 {
@@ -13,6 +14,7 @@ namespace Rendeleskezelo
             this.StartPosition = FormStartPosition.CenterScreen;
             dataGridViewOrders.DataSource = orderDTOBindingSource;
             BetoltesRendelesek();
+            PopulateStatusComboBoxFromApi();
         }
 
 
@@ -38,16 +40,47 @@ namespace Rendeleskezelo
             }
 
             string filterCustomerName = textBoxCustomerName.Text.Trim().ToLower();
+            string selectedStatus = comboBoxStatus.SelectedItem?.ToString().Trim().ToLower() ?? "";
 
             var filteredOrders = response.Content
-            .Where(order => !string.IsNullOrEmpty(order.StatusName) &&
-                    (string.IsNullOrEmpty(filterCustomerName) ||
-                     (order.BillingAddress.FirstName + " " + order.BillingAddress.LastName).ToLower().Contains(filterCustomerName)))
-            .Select(order => new OrderDTO(order))  // Map to custom DTO
-            .ToList();
+                    .Where(order => !string.IsNullOrEmpty(order.StatusName) &&
+                                    (string.IsNullOrEmpty(filterCustomerName) ||
+                                     (order.BillingAddress.FirstName + " " + order.BillingAddress.LastName).ToLower().Contains(filterCustomerName)) &&
+                                    (string.IsNullOrEmpty(selectedStatus) ||
+                                     order.StatusName.ToLower().Contains(selectedStatus)))
+                    .Select(order => new OrderDTO(order))  // Map to custom DTO
+                    .ToList();
 
             orderDTOBindingSource.DataSource = filteredOrders;
         }
+
+        private void PopulateStatusComboBoxFromApi()
+        {
+            Api proxy = ApiHivas();
+            var response = proxy.OrdersFindAll();
+
+            if (response != null && response.Content != null)
+            {
+                var statuses = response.Content
+                    .Where(order => !string.IsNullOrEmpty(order.StatusName))
+                    .Select(order => order.StatusName)
+                    .Distinct()
+                    .ToList();
+
+                comboBoxStatus.Items.Clear();
+
+                foreach (var status in statuses)
+                {
+                    comboBoxStatus.Items.Add(status);
+                }
+
+            }
+            else
+            {
+                MessageBox.Show("Failed to load statuses from the API.");
+            }
+        }
+
 
         private void buttonModOrder_Click(object sender, EventArgs e)
         {
@@ -63,6 +96,23 @@ namespace Rendeleskezelo
         }
 
         private void textBoxCustomerName_TextChanged(object sender, EventArgs e)
+        {
+            BetoltesRendelesek();
+        }
+
+        private void comboBoxStatus_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            BetoltesRendelesek();
+        }
+
+        private void buttonClear_Click(object sender, EventArgs e)
+        {
+            comboBoxStatus.SelectedIndex = -1;
+            textBoxCustomerName.Clear();
+            BetoltesRendelesek();
+        }
+
+        private void buttonReload_Click(object sender, EventArgs e)
         {
             BetoltesRendelesek();
         }

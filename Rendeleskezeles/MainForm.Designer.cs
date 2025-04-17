@@ -38,11 +38,12 @@ namespace Rendeleskezelo
             this.buttonDelOrder = new System.Windows.Forms.Button();
             this.buttonReload = new System.Windows.Forms.Button();
             this.buttonSignOut = new System.Windows.Forms.Button();
-            this.comboBox1 = new System.Windows.Forms.ComboBox();
+            this.comboBoxStatus = new System.Windows.Forms.ComboBox();
             this.textBoxCustomerName = new System.Windows.Forms.TextBox();
             this.label1 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.statusStrip = new System.Windows.Forms.StatusStrip();
+            this.buttonClear = new System.Windows.Forms.Button();
             this.orderIdDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.customerNameDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.emailDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -118,6 +119,7 @@ namespace Rendeleskezelo
             this.buttonReload.TabIndex = 4;
             this.buttonReload.Text = "Frissítés";
             this.buttonReload.UseVisualStyleBackColor = true;
+            this.buttonReload.Click += new System.EventHandler(this.buttonReload_Click);
             // 
             // buttonSignOut
             // 
@@ -129,21 +131,22 @@ namespace Rendeleskezelo
             this.buttonSignOut.Text = "Kijelentekezés";
             this.buttonSignOut.UseVisualStyleBackColor = true;
             // 
-            // comboBox1
+            // comboBoxStatus
             // 
-            this.comboBox1.FormattingEnabled = true;
-            this.comboBox1.Location = new System.Drawing.Point(417, 24);
-            this.comboBox1.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.comboBox1.Name = "comboBox1";
-            this.comboBox1.Size = new System.Drawing.Size(158, 21);
-            this.comboBox1.TabIndex = 6;
+            this.comboBoxStatus.FormattingEnabled = true;
+            this.comboBoxStatus.Location = new System.Drawing.Point(348, 24);
+            this.comboBoxStatus.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.comboBoxStatus.Name = "comboBoxStatus";
+            this.comboBoxStatus.Size = new System.Drawing.Size(94, 21);
+            this.comboBoxStatus.TabIndex = 6;
+            this.comboBoxStatus.SelectedIndexChanged += new System.EventHandler(this.comboBoxStatus_SelectedIndexChanged);
             // 
             // textBoxCustomerName
             // 
             this.textBoxCustomerName.Location = new System.Drawing.Point(105, 24);
             this.textBoxCustomerName.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.textBoxCustomerName.Name = "textBoxCustomerName";
-            this.textBoxCustomerName.Size = new System.Drawing.Size(213, 20);
+            this.textBoxCustomerName.Size = new System.Drawing.Size(168, 20);
             this.textBoxCustomerName.TabIndex = 7;
             this.textBoxCustomerName.TextChanged += new System.EventHandler(this.textBoxCustomerName_TextChanged);
             // 
@@ -159,7 +162,7 @@ namespace Rendeleskezelo
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(361, 27);
+            this.label2.Location = new System.Drawing.Point(297, 27);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(45, 13);
             this.label2.TabIndex = 9;
@@ -174,6 +177,16 @@ namespace Rendeleskezelo
             this.statusStrip.Size = new System.Drawing.Size(663, 22);
             this.statusStrip.TabIndex = 10;
             this.statusStrip.Text = "statusStrip1";
+            // 
+            // buttonClear
+            // 
+            this.buttonClear.Location = new System.Drawing.Point(472, 22);
+            this.buttonClear.Name = "buttonClear";
+            this.buttonClear.Size = new System.Drawing.Size(75, 23);
+            this.buttonClear.TabIndex = 11;
+            this.buttonClear.Text = "Clear";
+            this.buttonClear.UseVisualStyleBackColor = true;
+            this.buttonClear.Click += new System.EventHandler(this.buttonClear_Click);
             // 
             // orderIdDataGridViewTextBoxColumn
             // 
@@ -233,11 +246,12 @@ namespace Rendeleskezelo
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.Window;
             this.ClientSize = new System.Drawing.Size(663, 462);
+            this.Controls.Add(this.buttonClear);
             this.Controls.Add(this.statusStrip);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.textBoxCustomerName);
-            this.Controls.Add(this.comboBox1);
+            this.Controls.Add(this.comboBoxStatus);
             this.Controls.Add(this.buttonSignOut);
             this.Controls.Add(this.buttonReload);
             this.Controls.Add(this.buttonDelOrder);
@@ -262,7 +276,7 @@ namespace Rendeleskezelo
         private Button buttonDelOrder;
         private Button buttonReload;
         private Button buttonSignOut;
-        private ComboBox comboBox1;
+        private ComboBox comboBoxStatus;
         private TextBox textBoxCustomerName;
         private Label label1;
         private Label label2;
@@ -276,5 +290,6 @@ namespace Rendeleskezelo
         private DataGridViewTextBoxColumn shippingCostDataGridViewTextBoxColumn;
         private DataGridViewTextBoxColumn orderTotalDataGridViewTextBoxColumn;
         private BindingSource orderDTOBindingSource;
+        private Button buttonClear;
     }
 }
