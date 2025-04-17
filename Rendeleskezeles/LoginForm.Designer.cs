@@ -31,94 +31,92 @@ namespace Rendeleskezelo
         /// </summary>
         private void InitializeComponent()
         {
-            buttonLogin = new Button();
-            label1 = new Label();
-            label2 = new Label();
-            label3 = new Label();
-            txtUsername = new TextBox();
-            txtPassword = new TextBox();
-            lblError = new Label();
-            SuspendLayout();
+            this.buttonLogin = new System.Windows.Forms.Button();
+            this.label1 = new System.Windows.Forms.Label();
+            this.label2 = new System.Windows.Forms.Label();
+            this.label3 = new System.Windows.Forms.Label();
+            this.txtUsername = new System.Windows.Forms.TextBox();
+            this.txtPassword = new System.Windows.Forms.TextBox();
+            this.lblError = new System.Windows.Forms.Label();
+            this.SuspendLayout();
             // 
             // buttonLogin
             // 
-            buttonLogin.Location = new Point(56, 187);
-            buttonLogin.Name = "buttonLogin";
-            buttonLogin.Size = new Size(281, 23);
-            buttonLogin.TabIndex = 0;
-            buttonLogin.Text = "Bejelentkezés";
-            buttonLogin.UseVisualStyleBackColor = true;
-            buttonLogin.Click += buttonLogin_Click;
+            this.buttonLogin.Location = new System.Drawing.Point(25, 141);
+            this.buttonLogin.Name = "buttonLogin";
+            this.buttonLogin.Size = new System.Drawing.Size(216, 24);
+            this.buttonLogin.TabIndex = 0;
+            this.buttonLogin.Text = "Bejelentkezés";
+            this.buttonLogin.UseVisualStyleBackColor = true;
+            this.buttonLogin.Click += new System.EventHandler(this.buttonLogin_Click);
             // 
             // label1
             // 
-            label1.AutoSize = true;
-            label1.Location = new Point(56, 82);
-            label1.Name = "label1";
-            label1.Size = new Size(90, 15);
-            label1.TabIndex = 1;
-            label1.Text = "Felhasználónév:";
+            this.label1.AutoSize = true;
+            this.label1.Location = new System.Drawing.Point(22, 51);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(84, 13);
+            this.label1.TabIndex = 1;
+            this.label1.Text = "Felhasználónév:";
             // 
             // label2
             // 
-            label2.AutoSize = true;
-            label2.Location = new Point(56, 129);
-            label2.Name = "label2";
-            label2.Size = new Size(40, 15);
-            label2.TabIndex = 2;
-            label2.Text = "Jelszó:";
+            this.label2.AutoSize = true;
+            this.label2.Location = new System.Drawing.Point(22, 91);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(39, 13);
+            this.label2.TabIndex = 2;
+            this.label2.Text = "Jelszó:";
             // 
             // label3
             // 
-            label3.AutoSize = true;
-            label3.Location = new Point(105, 30);
-            label3.Name = "label3";
-            label3.Size = new Size(171, 15);
-            label3.TabIndex = 3;
-            label3.Text = "Kérlek jelentkezz be a fiókodba!";
+            this.label3.AutoSize = true;
+            this.label3.Location = new System.Drawing.Point(49, 18);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(158, 13);
+            this.label3.TabIndex = 3;
+            this.label3.Text = "Kérlek jelentkezz be a fiókodba!";
             // 
             // txtUsername
             // 
-            txtUsername.Location = new Point(152, 79);
-            txtUsername.Name = "txtUsername";
-            txtUsername.Size = new Size(185, 23);
-            txtUsername.TabIndex = 4;
+            this.txtUsername.Location = new System.Drawing.Point(112, 48);
+            this.txtUsername.Name = "txtUsername";
+            this.txtUsername.Size = new System.Drawing.Size(129, 20);
+            this.txtUsername.TabIndex = 4;
             // 
             // txtPassword
             // 
-            txtPassword.Location = new Point(152, 126);
-            txtPassword.Name = "txtPassword";
-            txtPassword.Size = new Size(185, 23);
-            txtPassword.TabIndex = 5;
-            txtPassword.UseSystemPasswordChar = true;
+            this.txtPassword.Location = new System.Drawing.Point(112, 84);
+            this.txtPassword.Name = "txtPassword";
+            this.txtPassword.Size = new System.Drawing.Size(129, 20);
+            this.txtPassword.TabIndex = 5;
+            this.txtPassword.UseSystemPasswordChar = true;
             // 
             // lblError
             // 
-            lblError.AutoSize = true;
-            lblError.ForeColor = Color.Red;
-            lblError.Location = new Point(152, 164);
-            lblError.Name = "lblError";
-            lblError.Size = new Size(32, 15);
-            lblError.TabIndex = 6;
-            lblError.Text = "Error";
-            lblError.Visible = false;
+            this.lblError.AutoSize = true;
+            this.lblError.ForeColor = System.Drawing.Color.Red;
+            this.lblError.Location = new System.Drawing.Point(109, 116);
+            this.lblError.Name = "lblError";
+            this.lblError.Size = new System.Drawing.Size(29, 13);
+            this.lblError.TabIndex = 6;
+            this.lblError.Text = "Error";
+            this.lblError.Visible = false;
             // 
             // LoginForm
             // 
-            AutoScaleDimensions = new SizeF(7F, 15F);
-            ClientSize = new Size(390, 222);
-            Controls.Add(lblError);
-            Controls.Add(txtPassword);
-            Controls.Add(txtUsername);
-            Controls.Add(label3);
-            Controls.Add(label2);
-            Controls.Add(label1);
-            Controls.Add(buttonLogin);
-            Name = "LoginForm";
-            Text = "Bejelentkezés";
-            Load += LoginForm_Load;
-            ResumeLayout(false);
-            PerformLayout();
+            this.ClientSize = new System.Drawing.Size(257, 186);
+            this.Controls.Add(this.lblError);
+            this.Controls.Add(this.txtPassword);
+            this.Controls.Add(this.txtUsername);
+            this.Controls.Add(this.label3);
+            this.Controls.Add(this.label2);
+            this.Controls.Add(this.label1);
+            this.Controls.Add(this.buttonLogin);
+            this.Name = "LoginForm";
+            this.Text = "Bejelentkezés";
+            this.ResumeLayout(false);
+            this.PerformLayout();
 
         }
 

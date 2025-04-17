@@ -31,153 +31,151 @@ namespace Rendeleskezelo
         /// </summary>
         private void InitializeComponent()
         {
-            dataGridViewOrders = new DataGridView();
-            buttonAddOrder = new Button();
-            buttonModOrder = new Button();
-            buttonDelOrder = new Button();
-            buttonReload = new Button();
-            buttonSignOut = new Button();
-            comboBox1 = new ComboBox();
-            textBox1 = new TextBox();
-            label1 = new Label();
-            label2 = new Label();
-            statusStrip = new StatusStrip();
-            ((System.ComponentModel.ISupportInitialize)dataGridViewOrders).BeginInit();
-            SuspendLayout();
+            this.dataGridViewOrders = new System.Windows.Forms.DataGridView();
+            this.buttonAddOrder = new System.Windows.Forms.Button();
+            this.buttonModOrder = new System.Windows.Forms.Button();
+            this.buttonDelOrder = new System.Windows.Forms.Button();
+            this.buttonReload = new System.Windows.Forms.Button();
+            this.buttonSignOut = new System.Windows.Forms.Button();
+            this.comboBox1 = new System.Windows.Forms.ComboBox();
+            this.textBox1 = new System.Windows.Forms.TextBox();
+            this.label1 = new System.Windows.Forms.Label();
+            this.label2 = new System.Windows.Forms.Label();
+            this.statusStrip = new System.Windows.Forms.StatusStrip();
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridViewOrders)).BeginInit();
+            this.SuspendLayout();
             // 
             // dataGridViewOrders
             // 
-            dataGridViewOrders.BackgroundColor = SystemColors.Window;
-            dataGridViewOrders.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dataGridViewOrders.Location = new Point(22, 314);
-            dataGridViewOrders.Margin = new Padding(6, 6, 6, 6);
-            dataGridViewOrders.Name = "dataGridViewOrders";
-            dataGridViewOrders.RowHeadersWidth = 82;
-            dataGridViewOrders.Size = new Size(1343, 913);
-            dataGridViewOrders.TabIndex = 0;
+            this.dataGridViewOrders.BackgroundColor = System.Drawing.SystemColors.Window;
+            this.dataGridViewOrders.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dataGridViewOrders.Location = new System.Drawing.Point(27, 119);
+            this.dataGridViewOrders.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.dataGridViewOrders.Name = "dataGridViewOrders";
+            this.dataGridViewOrders.RowHeadersWidth = 82;
+            this.dataGridViewOrders.Size = new System.Drawing.Size(603, 302);
+            this.dataGridViewOrders.TabIndex = 0;
             // 
             // buttonAddOrder
             // 
-            buttonAddOrder.Location = new Point(58, 205);
-            buttonAddOrder.Margin = new Padding(6, 6, 6, 6);
-            buttonAddOrder.Name = "buttonAddOrder";
-            buttonAddOrder.Size = new Size(184, 49);
-            buttonAddOrder.TabIndex = 1;
-            buttonAddOrder.Text = "Új felvétel";
-            buttonAddOrder.UseVisualStyleBackColor = true;
+            this.buttonAddOrder.Location = new System.Drawing.Point(27, 83);
+            this.buttonAddOrder.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.buttonAddOrder.Name = "buttonAddOrder";
+            this.buttonAddOrder.Size = new System.Drawing.Size(85, 20);
+            this.buttonAddOrder.TabIndex = 1;
+            this.buttonAddOrder.Text = "Új felvétel";
+            this.buttonAddOrder.UseVisualStyleBackColor = true;
             // 
             // buttonModOrder
             // 
-            buttonModOrder.Location = new Point(310, 205);
-            buttonModOrder.Margin = new Padding(6, 6, 6, 6);
-            buttonModOrder.Name = "buttonModOrder";
-            buttonModOrder.Size = new Size(175, 49);
-            buttonModOrder.TabIndex = 2;
-            buttonModOrder.Text = "Módosítás";
-            buttonModOrder.UseVisualStyleBackColor = true;
-            buttonModOrder.Click += buttonModOrder_Click;
+            this.buttonModOrder.Location = new System.Drawing.Point(143, 83);
+            this.buttonModOrder.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.buttonModOrder.Name = "buttonModOrder";
+            this.buttonModOrder.Size = new System.Drawing.Size(81, 20);
+            this.buttonModOrder.TabIndex = 2;
+            this.buttonModOrder.Text = "Módosítás";
+            this.buttonModOrder.UseVisualStyleBackColor = true;
+            this.buttonModOrder.Click += new System.EventHandler(this.buttonModOrder_Click);
             // 
             // buttonDelOrder
             // 
-            buttonDelOrder.Location = new Point(539, 205);
-            buttonDelOrder.Margin = new Padding(6, 6, 6, 6);
-            buttonDelOrder.Name = "buttonDelOrder";
-            buttonDelOrder.Size = new Size(175, 49);
-            buttonDelOrder.TabIndex = 3;
-            buttonDelOrder.Text = "Törlés";
-            buttonDelOrder.UseVisualStyleBackColor = true;
+            this.buttonDelOrder.Location = new System.Drawing.Point(249, 83);
+            this.buttonDelOrder.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.buttonDelOrder.Name = "buttonDelOrder";
+            this.buttonDelOrder.Size = new System.Drawing.Size(81, 20);
+            this.buttonDelOrder.TabIndex = 3;
+            this.buttonDelOrder.Text = "Törlés";
+            this.buttonDelOrder.UseVisualStyleBackColor = true;
             // 
             // buttonReload
             // 
-            buttonReload.Location = new Point(782, 205);
-            buttonReload.Margin = new Padding(6, 6, 6, 6);
-            buttonReload.Name = "buttonReload";
-            buttonReload.Size = new Size(175, 49);
-            buttonReload.TabIndex = 4;
-            buttonReload.Text = "Frissítés";
-            buttonReload.UseVisualStyleBackColor = true;
+            this.buttonReload.Location = new System.Drawing.Point(361, 83);
+            this.buttonReload.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.buttonReload.Name = "buttonReload";
+            this.buttonReload.Size = new System.Drawing.Size(81, 20);
+            this.buttonReload.TabIndex = 4;
+            this.buttonReload.Text = "Frissítés";
+            this.buttonReload.UseVisualStyleBackColor = true;
             // 
             // buttonSignOut
             // 
-            buttonSignOut.Location = new Point(1151, 205);
-            buttonSignOut.Margin = new Padding(6, 6, 6, 6);
-            buttonSignOut.Name = "buttonSignOut";
-            buttonSignOut.Size = new Size(214, 49);
-            buttonSignOut.TabIndex = 5;
-            buttonSignOut.Text = "Kijelentekezés";
-            buttonSignOut.UseVisualStyleBackColor = true;
+            this.buttonSignOut.Location = new System.Drawing.Point(531, 83);
+            this.buttonSignOut.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.buttonSignOut.Name = "buttonSignOut";
+            this.buttonSignOut.Size = new System.Drawing.Size(99, 20);
+            this.buttonSignOut.TabIndex = 5;
+            this.buttonSignOut.Text = "Kijelentekezés";
+            this.buttonSignOut.UseVisualStyleBackColor = true;
             // 
             // comboBox1
             // 
-            comboBox1.FormattingEnabled = true;
-            comboBox1.Location = new Point(903, 60);
-            comboBox1.Margin = new Padding(6, 6, 6, 6);
-            comboBox1.Name = "comboBox1";
-            comboBox1.Size = new Size(338, 40);
-            comboBox1.TabIndex = 6;
+            this.comboBox1.FormattingEnabled = true;
+            this.comboBox1.Location = new System.Drawing.Point(417, 24);
+            this.comboBox1.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.comboBox1.Name = "comboBox1";
+            this.comboBox1.Size = new System.Drawing.Size(158, 21);
+            this.comboBox1.TabIndex = 6;
             // 
             // textBox1
             // 
-            textBox1.Location = new Point(227, 60);
-            textBox1.Margin = new Padding(6, 6, 6, 6);
-            textBox1.Name = "textBox1";
-            textBox1.Size = new Size(457, 39);
-            textBox1.TabIndex = 7;
+            this.textBox1.Location = new System.Drawing.Point(105, 24);
+            this.textBox1.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.textBox1.Name = "textBox1";
+            this.textBox1.Size = new System.Drawing.Size(213, 20);
+            this.textBox1.TabIndex = 7;
             // 
             // label1
             // 
-            label1.AutoSize = true;
-            label1.Location = new Point(58, 66);
-            label1.Margin = new Padding(6, 0, 6, 0);
-            label1.Name = "label1";
-            label1.Size = new Size(174, 32);
-            label1.TabIndex = 8;
-            label1.Text = "Ügyfél keresés:";
+            this.label1.AutoSize = true;
+            this.label1.Location = new System.Drawing.Point(27, 27);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(80, 13);
+            this.label1.TabIndex = 8;
+            this.label1.Text = "Ügyfél keresés:";
             // 
             // label2
             // 
-            label2.AutoSize = true;
-            label2.Location = new Point(782, 66);
-            label2.Margin = new Padding(6, 0, 6, 0);
-            label2.Name = "label2";
-            label2.Size = new Size(94, 32);
-            label2.TabIndex = 9;
-            label2.Text = "Státusz:";
+            this.label2.AutoSize = true;
+            this.label2.Location = new System.Drawing.Point(361, 27);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(45, 13);
+            this.label2.TabIndex = 9;
+            this.label2.Text = "Státusz:";
             // 
             // statusStrip
             // 
-            statusStrip.ImageScalingSize = new Size(32, 32);
-            statusStrip.Location = new Point(0, 1275);
-            statusStrip.Name = "statusStrip";
-            statusStrip.Padding = new Padding(2, 0, 26, 0);
-            statusStrip.Size = new Size(1437, 22);
-            statusStrip.TabIndex = 10;
-            statusStrip.Text = "statusStrip1";
+            this.statusStrip.ImageScalingSize = new System.Drawing.Size(32, 32);
+            this.statusStrip.Location = new System.Drawing.Point(0, 440);
+            this.statusStrip.Name = "statusStrip";
+            this.statusStrip.Padding = new System.Windows.Forms.Padding(1, 0, 12, 0);
+            this.statusStrip.Size = new System.Drawing.Size(663, 22);
+            this.statusStrip.TabIndex = 10;
+            this.statusStrip.Text = "statusStrip1";
             // 
             // MainForm
             // 
-            AutoScaleDimensions = new SizeF(13F, 32F);
-            AutoScaleMode = AutoScaleMode.Font;
-            BackColor = SystemColors.Window;
-            ClientSize = new Size(1437, 1297);
-            Controls.Add(statusStrip);
-            Controls.Add(label2);
-            Controls.Add(label1);
-            Controls.Add(textBox1);
-            Controls.Add(comboBox1);
-            Controls.Add(buttonSignOut);
-            Controls.Add(buttonReload);
-            Controls.Add(buttonDelOrder);
-            Controls.Add(buttonModOrder);
-            Controls.Add(buttonAddOrder);
-            Controls.Add(dataGridViewOrders);
-            Margin = new Padding(6, 6, 6, 6);
-            Name = "MainForm";
-            Text = "Rendelések kezelése";
-            Load += MainForm_Load;
-            ((System.ComponentModel.ISupportInitialize)dataGridViewOrders).EndInit();
-            ResumeLayout(false);
-            PerformLayout();
+            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
+            this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.BackColor = System.Drawing.SystemColors.Window;
+            this.ClientSize = new System.Drawing.Size(663, 462);
+            this.Controls.Add(this.statusStrip);
+            this.Controls.Add(this.label2);
+            this.Controls.Add(this.label1);
+            this.Controls.Add(this.textBox1);
+            this.Controls.Add(this.comboBox1);
+            this.Controls.Add(this.buttonSignOut);
+            this.Controls.Add(this.buttonReload);
+            this.Controls.Add(this.buttonDelOrder);
+            this.Controls.Add(this.buttonModOrder);
+            this.Controls.Add(this.buttonAddOrder);
+            this.Controls.Add(this.dataGridViewOrders);
+            this.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.Name = "MainForm";
+            this.Text = "Rendelések kezelése";
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridViewOrders)).EndInit();
+            this.ResumeLayout(false);
+            this.PerformLayout();
+
         }
 
         #endregion

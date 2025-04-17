@@ -11,8 +11,7 @@ namespace Rendeleskezelo
             LoginForm loginForm = new LoginForm();
             if (loginForm.ShowDialog() == DialogResult.OK)
             {
-                Application.Exit();
-                //Application.Run(new MainForm());
+                Application.Run(new MainForm());
             }
             else
             {
