@@ -1,4 +1,7 @@
-﻿namespace Rendeleskezelo
+﻿using System.Drawing;
+using System.Windows.Forms;
+
+namespace Rendeleskezelo
 {
     partial class MainForm
     {

@@ -1,4 +1,6 @@
 using Hotcakes.CommerceDTO.v1.Client;
+using System;
+using System.Windows.Forms;
 
 namespace Rendeleskezelo
 {
