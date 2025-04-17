@@ -27,7 +27,7 @@ namespace Rendeleskezelo
             string password = txtPassword.Text;
 
             // Egyszerű hitelesítés
-            if (username == "admin" && password == "password123")
+            if (username == "a" && password == "a")
             {
                 this.DialogResult = DialogResult.OK;
                 this.Close();

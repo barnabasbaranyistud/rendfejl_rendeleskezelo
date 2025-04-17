@@ -89,6 +89,17 @@
       <AutoGen>True</AutoGen>
       <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
+    <None Include="Properties\DataSources\Hotcakes.CommerceDTO.v1.Orders.LineItemDTO.datasource" />
+    <None Include="Properties\DataSources\Hotcakes.CommerceDTO.v1.Orders.OrderCouponDTO.datasource" />
+    <None Include="Properties\DataSources\Hotcakes.CommerceDTO.v1.Orders.OrderDTO.datasource" />
+    <None Include="Properties\DataSources\Hotcakes.CommerceDTO.v1.Orders.OrderNoteDTO.datasource" />
+    <None Include="Properties\DataSources\Hotcakes.CommerceDTO.v1.Orders.OrderPackageDTO.datasource" />
+    <None Include="Properties\DataSources\Hotcakes.CommerceDTO.v1.Orders.OrderPackageItemDTO.datasource" />
+    <None Include="Properties\DataSources\Hotcakes.CommerceDTO.v1.Orders.OrderSnapshotDTO.datasource" />
+    <None Include="Properties\DataSources\Hotcakes.CommerceDTO.v1.Orders.OrderTransactionCardDataDTO.datasource" />
+    <None Include="Properties\DataSources\Hotcakes.CommerceDTO.v1.Orders.OrderTransactionDTO.datasource" />
+    <None Include="Properties\DataSources\Hotcakes.CommerceDTO.v1.Orders.OrderTransactionGiftCardDataDTO.datasource" />
+    <None Include="Properties\DataSources\OrderDTO.datasource" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
