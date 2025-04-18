@@ -132,6 +132,7 @@ namespace Rendeleskezelo
             this.buttonSignOut.TabIndex = 5;
             this.buttonSignOut.Text = "Kijelentekezés";
             this.buttonSignOut.UseVisualStyleBackColor = true;
+            this.buttonSignOut.Click += new System.EventHandler(this.buttonSignOut_Click);
             // 
             // comboBoxStatus
             // 

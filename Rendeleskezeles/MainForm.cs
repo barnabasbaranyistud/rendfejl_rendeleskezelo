@@ -237,5 +237,10 @@ namespace Rendeleskezelo
         {
             ImportOrdersFromExcel();
         }
+
+        private void buttonSignOut_Click(object sender, EventArgs e)
+        {
+            Application.Restart();
+        }
     }
 }
