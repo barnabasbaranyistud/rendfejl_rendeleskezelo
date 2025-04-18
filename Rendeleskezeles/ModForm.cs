@@ -1,4 +1,5 @@
-﻿using Rendeleskezeles;
+﻿using Hotcakes.CommerceDTO.v1.Client;
+using Rendeleskezeles;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -33,7 +34,7 @@ namespace Rendeleskezelo
             if (string.IsNullOrWhiteSpace(textBoxEmail.Text) || !IsValidEmail(textBoxEmail.Text))
                 errors.AppendLine("Érvényes e-mail cím megadása kötelező.");
 
-            if (dateTimePickerDatum.Value > DateTime.Now)
+            if (dateTimePickerDatum.Value > DateTime.Now.Date)
                 errors.AppendLine("A rendelés dátuma nem lehet jövőbeli időpont.");
 
             if (comboBoxStatusz.SelectedIndex < 0)
@@ -114,9 +115,78 @@ namespace Rendeleskezelo
         {
             if (ValidateForm())
             {
-                this.DialogResult = DialogResult.Yes;
+                UpdateOrderThroughApi();
                 this.Close();
             }
+        }
+
+        private string GetStatusCodeFromComboBox(string statusName)
+        {
+            switch (statusName)
+            {
+                case "Received":
+                    return "F37EC405-1EC6-4a91-9AC4-6836215FBBBC";
+                case "Ready for Shipping":
+                    return "0c6d4b57-3e46-4c20-9361-6b0e5827db5a";
+                case "Complete":
+                    return "09D7305D-BD95-48d2-A025-16ADC827582A";
+                default:
+                    return null;  // You could return an error message or a default code if necessary
+            }
+        }
+
+
+        private void UpdateOrderThroughApi()
+        {
+            string url = "http://rendfejl10001.northeurope.cloudapp.azure.com:8080";
+            string kulcs = "1-7d286e89-c54f-430f-906e-f4ec7847b883";
+            string orderId = ((OrderDTO)orderDTOBindingSource.Current).bvin;
+
+            Api proxy = new Api(url, kulcs);
+            var response = proxy.OrdersFind(orderId);
+            var order = response.Content;
+
+            var nev = textBoxNev.Text.Split(' ').Select(x => x.Trim()).ToArray();
+            order.BillingAddress.FirstName = nev[0];
+            order.BillingAddress.LastName = nev[1];
+
+            order.UserEmail = textBoxEmail.Text;
+            order.StatusName = comboBoxStatusz.Text;
+            order.StatusCode = GetStatusCodeFromComboBox(comboBoxStatusz.Text);
+
+            if (decimal.TryParse(textBoxMegrendelesAr.Text, out decimal orderTotal))
+            {
+                order.TotalGrand = orderTotal;
+            }
+
+            if (decimal.TryParse(textBoxSzallitasiAr.Text, out decimal shippingCost))
+            {
+                order.TotalShippingBeforeDiscounts = shippingCost;
+            }
+
+            order.TimeOfOrderUtc = dateTimePickerDatum.Value.ToUniversalTime();
+
+            // Szállítási cím (parszolni kell a TextBoxból)
+            var cim = textBoxSzallítasiCim.Text.Split(',').Select(x => x.Trim()).ToArray();
+            if (cim.Length == 4)
+            {
+                order.ShippingAddress.Line1 = cim[0];
+                order.ShippingAddress.City = cim[1];
+                order.ShippingAddress.CountryName = cim[2];
+                order.ShippingAddress.PostalCode = cim[3];
+            }
+
+            var updateResponse = proxy.OrdersUpdate(order);
+            if (updateResponse.Errors == null || updateResponse.Errors.Count == 0)
+            {
+                MessageBox.Show("A rendelés sikeresen frissítve lett!");
+            }
+            else
+            {
+                string errorMessages = string.Join("\n", updateResponse.Errors);
+                MessageBox.Show("Hiba történt a frissítés során: " + errorMessages);
+            }
+
         }
     }
 }

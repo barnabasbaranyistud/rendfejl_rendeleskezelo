@@ -85,14 +85,7 @@ namespace Rendeleskezelo
         private void buttonModOrder_Click(object sender, EventArgs e)
         {
             ModForm modForm = new ModForm(this.orderDTOBindingSource);
-            if (modForm.ShowDialog() == DialogResult.Yes)
-            {
-                MessageBox.Show("Rendelés módosítva.");
-            }
-            else
-            {
-                MessageBox.Show("Rendelés nem módosítva.");
-            }
+            modForm.ShowDialog();
         }
 
         private void textBoxCustomerName_TextChanged(object sender, EventArgs e)
