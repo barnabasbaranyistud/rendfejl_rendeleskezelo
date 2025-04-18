@@ -118,8 +118,9 @@ namespace Rendeleskezelo
             // 
             // label8
             // 
+            this.label8.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             this.label8.AutoSize = true;
-            this.label8.Location = new System.Drawing.Point(125, 301);
+            this.label8.Location = new System.Drawing.Point(28, 322);
             this.label8.Name = "label8";
             this.label8.Size = new System.Drawing.Size(95, 13);
             this.label8.TabIndex = 7;
@@ -128,64 +129,79 @@ namespace Rendeleskezelo
             // 
             // textBoxNev
             // 
+            this.textBoxNev.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.textBoxNev.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.orderDTOBindingSource, "CustomerName", true));
-            this.textBoxNev.Location = new System.Drawing.Point(145, 23);
+            this.textBoxNev.Location = new System.Drawing.Point(148, 23);
             this.textBoxNev.Name = "textBoxNev";
-            this.textBoxNev.Size = new System.Drawing.Size(175, 20);
+            this.textBoxNev.Size = new System.Drawing.Size(212, 20);
             this.textBoxNev.TabIndex = 9;
             // 
             // textBoxEmail
             // 
+            this.textBoxEmail.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.textBoxEmail.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.orderDTOBindingSource, "Email", true));
-            this.textBoxEmail.Location = new System.Drawing.Point(145, 61);
+            this.textBoxEmail.Location = new System.Drawing.Point(148, 61);
             this.textBoxEmail.Name = "textBoxEmail";
-            this.textBoxEmail.Size = new System.Drawing.Size(175, 20);
+            this.textBoxEmail.Size = new System.Drawing.Size(212, 20);
             this.textBoxEmail.TabIndex = 10;
             // 
             // textBoxSzallítasiCim
             // 
+            this.textBoxSzallítasiCim.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.textBoxSzallítasiCim.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.orderDTOBindingSource, "ShippingAddress", true));
-            this.textBoxSzallítasiCim.Location = new System.Drawing.Point(145, 178);
+            this.textBoxSzallítasiCim.Location = new System.Drawing.Point(148, 178);
             this.textBoxSzallítasiCim.Name = "textBoxSzallítasiCim";
-            this.textBoxSzallítasiCim.Size = new System.Drawing.Size(175, 20);
+            this.textBoxSzallítasiCim.Size = new System.Drawing.Size(212, 20);
             this.textBoxSzallítasiCim.TabIndex = 11;
             // 
             // textBoxSzallitasiAr
             // 
+            this.textBoxSzallitasiAr.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.textBoxSzallitasiAr.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.orderDTOBindingSource, "ShippingCost", true));
-            this.textBoxSzallitasiAr.Location = new System.Drawing.Point(145, 219);
+            this.textBoxSzallitasiAr.Location = new System.Drawing.Point(148, 219);
             this.textBoxSzallitasiAr.Name = "textBoxSzallitasiAr";
-            this.textBoxSzallitasiAr.Size = new System.Drawing.Size(175, 20);
+            this.textBoxSzallitasiAr.Size = new System.Drawing.Size(212, 20);
             this.textBoxSzallitasiAr.TabIndex = 12;
             // 
             // textBoxMegrendelesAr
             // 
+            this.textBoxMegrendelesAr.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.textBoxMegrendelesAr.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.orderDTOBindingSource, "OrderTotal", true));
-            this.textBoxMegrendelesAr.Location = new System.Drawing.Point(145, 258);
+            this.textBoxMegrendelesAr.Location = new System.Drawing.Point(148, 258);
             this.textBoxMegrendelesAr.Name = "textBoxMegrendelesAr";
-            this.textBoxMegrendelesAr.Size = new System.Drawing.Size(175, 20);
+            this.textBoxMegrendelesAr.Size = new System.Drawing.Size(212, 20);
             this.textBoxMegrendelesAr.TabIndex = 13;
             // 
             // dateTimePickerDatum
             // 
+            this.dateTimePickerDatum.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.dateTimePickerDatum.DataBindings.Add(new System.Windows.Forms.Binding("Value", this.orderDTOBindingSource, "OrderDate", true));
-            this.dateTimePickerDatum.Location = new System.Drawing.Point(145, 96);
+            this.dateTimePickerDatum.Location = new System.Drawing.Point(148, 96);
             this.dateTimePickerDatum.Name = "dateTimePickerDatum";
-            this.dateTimePickerDatum.Size = new System.Drawing.Size(175, 20);
+            this.dateTimePickerDatum.Size = new System.Drawing.Size(212, 20);
             this.dateTimePickerDatum.TabIndex = 14;
             // 
             // comboBoxStatusz
             // 
+            this.comboBoxStatusz.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.comboBoxStatusz.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.orderDTOBindingSource, "Status", true));
             this.comboBoxStatusz.FormattingEnabled = true;
-            this.comboBoxStatusz.Location = new System.Drawing.Point(145, 136);
+            this.comboBoxStatusz.Location = new System.Drawing.Point(148, 136);
             this.comboBoxStatusz.Name = "comboBoxStatusz";
-            this.comboBoxStatusz.Size = new System.Drawing.Size(175, 21);
+            this.comboBoxStatusz.Size = new System.Drawing.Size(212, 21);
             this.comboBoxStatusz.TabIndex = 15;
             // 
             // buttonCancel
             // 
-            this.buttonCancel.Location = new System.Drawing.Point(145, 336);
+            this.buttonCancel.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.buttonCancel.Location = new System.Drawing.Point(186, 315);
             this.buttonCancel.Name = "buttonCancel";
             this.buttonCancel.Size = new System.Drawing.Size(87, 26);
             this.buttonCancel.TabIndex = 16;
@@ -194,7 +210,8 @@ namespace Rendeleskezelo
             // 
             // buttonSave
             // 
-            this.buttonSave.Location = new System.Drawing.Point(239, 336);
+            this.buttonSave.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.buttonSave.Location = new System.Drawing.Point(279, 315);
             this.buttonSave.Name = "buttonSave";
             this.buttonSave.Size = new System.Drawing.Size(81, 26);
             this.buttonSave.TabIndex = 17;
@@ -209,7 +226,7 @@ namespace Rendeleskezelo
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(340, 375);
+            this.ClientSize = new System.Drawing.Size(380, 354);
             this.Controls.Add(this.buttonSave);
             this.Controls.Add(this.buttonCancel);
             this.Controls.Add(this.comboBoxStatusz);
