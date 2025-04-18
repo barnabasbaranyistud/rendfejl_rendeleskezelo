@@ -31,221 +31,207 @@ namespace Rendeleskezelo
         /// </summary>
         private void InitializeComponent()
         {
-            label1 = new Label();
-            label2 = new Label();
-            label3 = new Label();
-            label4 = new Label();
-            label5 = new Label();
-            label6 = new Label();
-            label7 = new Label();
-            label8 = new Label();
-            label9 = new Label();
-            textBoxNev = new TextBox();
-            textBoxEmail = new TextBox();
-            textBoxSzallítasiCim = new TextBox();
-            textBoxSzallitasiAr = new TextBox();
-            textBoxMegrendelesAr = new TextBox();
-            dateTimePickerDatum = new DateTimePicker();
-            comboBoxStatusz = new ComboBox();
-            buttonCancel = new Button();
-            buttonSave = new Button();
-            textBoxTermekek = new TextBox();
-            textBoxMennyiseg = new TextBox();
-            SuspendLayout();
+            this.components = new System.ComponentModel.Container();
+            this.label1 = new System.Windows.Forms.Label();
+            this.label2 = new System.Windows.Forms.Label();
+            this.label3 = new System.Windows.Forms.Label();
+            this.label4 = new System.Windows.Forms.Label();
+            this.label5 = new System.Windows.Forms.Label();
+            this.label6 = new System.Windows.Forms.Label();
+            this.label7 = new System.Windows.Forms.Label();
+            this.label8 = new System.Windows.Forms.Label();
+            this.textBoxNev = new System.Windows.Forms.TextBox();
+            this.textBoxEmail = new System.Windows.Forms.TextBox();
+            this.textBoxSzallítasiCim = new System.Windows.Forms.TextBox();
+            this.textBoxSzallitasiAr = new System.Windows.Forms.TextBox();
+            this.textBoxMegrendelesAr = new System.Windows.Forms.TextBox();
+            this.dateTimePickerDatum = new System.Windows.Forms.DateTimePicker();
+            this.comboBoxStatusz = new System.Windows.Forms.ComboBox();
+            this.buttonCancel = new System.Windows.Forms.Button();
+            this.buttonSave = new System.Windows.Forms.Button();
+            this.orderDTOBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            ((System.ComponentModel.ISupportInitialize)(this.orderDTOBindingSource)).BeginInit();
+            this.SuspendLayout();
             // 
             // label1
             // 
-            label1.AutoSize = true;
-            label1.Location = new Point(30, 29);
-            label1.Name = "label1";
-            label1.Size = new Size(31, 15);
-            label1.TabIndex = 0;
-            label1.Text = "Név:";
+            this.label1.AutoSize = true;
+            this.label1.Location = new System.Drawing.Point(26, 25);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(30, 13);
+            this.label1.TabIndex = 0;
+            this.label1.Text = "Név:";
             // 
             // label2
             // 
-            label2.AutoSize = true;
-            label2.Location = new Point(30, 73);
-            label2.Name = "label2";
-            label2.Size = new Size(67, 15);
-            label2.TabIndex = 1;
-            label2.Text = "E-mail cím:";
+            this.label2.AutoSize = true;
+            this.label2.Location = new System.Drawing.Point(26, 63);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(59, 13);
+            this.label2.TabIndex = 1;
+            this.label2.Text = "E-mail cím:";
             // 
             // label3
             // 
-            label3.AutoSize = true;
-            label3.Location = new Point(30, 117);
-            label3.Name = "label3";
-            label3.Size = new Size(101, 15);
-            label3.TabIndex = 2;
-            label3.Text = "Rendelés dátuma:";
+            this.label3.AutoSize = true;
+            this.label3.Location = new System.Drawing.Point(26, 101);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(93, 13);
+            this.label3.TabIndex = 2;
+            this.label3.Text = "Rendelés dátuma:";
             // 
             // label4
             // 
-            label4.AutoSize = true;
-            label4.Location = new Point(30, 160);
-            label4.Name = "label4";
-            label4.Size = new Size(102, 15);
-            label4.TabIndex = 3;
-            label4.Text = "Rendelés státusza:";
+            this.label4.AutoSize = true;
+            this.label4.Location = new System.Drawing.Point(26, 139);
+            this.label4.Name = "label4";
+            this.label4.Size = new System.Drawing.Size(97, 13);
+            this.label4.TabIndex = 3;
+            this.label4.Text = "Rendelés státusza:";
             // 
             // label5
             // 
-            label5.AutoSize = true;
-            label5.Location = new Point(30, 208);
-            label5.Name = "label5";
-            label5.Size = new Size(77, 15);
-            label5.TabIndex = 4;
-            label5.Text = "Szállítási cím:";
+            this.label5.AutoSize = true;
+            this.label5.Location = new System.Drawing.Point(26, 180);
+            this.label5.Name = "label5";
+            this.label5.Size = new System.Drawing.Size(73, 13);
+            this.label5.TabIndex = 4;
+            this.label5.Text = "Szállítási cím:";
             // 
             // label6
             // 
-            label6.AutoSize = true;
-            label6.Location = new Point(30, 256);
-            label6.Name = "label6";
-            label6.Size = new Size(70, 15);
-            label6.TabIndex = 5;
-            label6.Text = "Szállítás ára:";
+            this.label6.AutoSize = true;
+            this.label6.Location = new System.Drawing.Point(26, 222);
+            this.label6.Name = "label6";
+            this.label6.Size = new System.Drawing.Size(68, 13);
+            this.label6.TabIndex = 5;
+            this.label6.Text = "Szállítás ára:";
             // 
             // label7
             // 
-            label7.AutoSize = true;
-            label7.Location = new Point(30, 301);
-            label7.Name = "label7";
-            label7.Size = new Size(122, 15);
-            label7.TabIndex = 6;
-            label7.Text = "Megrendelés összege:";
+            this.label7.AutoSize = true;
+            this.label7.Location = new System.Drawing.Point(26, 261);
+            this.label7.Name = "label7";
+            this.label7.Size = new System.Drawing.Size(113, 13);
+            this.label7.TabIndex = 6;
+            this.label7.Text = "Megrendelés összege:";
             // 
             // label8
             // 
-            label8.AutoSize = true;
-            label8.Location = new Point(30, 347);
-            label8.Name = "label8";
-            label8.Size = new Size(102, 15);
-            label8.TabIndex = 7;
-            label8.Text = "Rendelt termékek:";
-            // 
-            // label9
-            // 
-            label9.AutoSize = true;
-            label9.Location = new Point(30, 395);
-            label9.Name = "label9";
-            label9.Size = new Size(111, 15);
-            label9.TabIndex = 8;
-            label9.Text = "Rendelt mennyiség:";
+            this.label8.AutoSize = true;
+            this.label8.Location = new System.Drawing.Point(125, 301);
+            this.label8.Name = "label8";
+            this.label8.Size = new System.Drawing.Size(95, 13);
+            this.label8.TabIndex = 7;
+            this.label8.Text = "Rendelt Termékek";
+            this.label8.Click += new System.EventHandler(this.label8_Click);
             // 
             // textBoxNev
             // 
-            textBoxNev.Location = new Point(169, 26);
-            textBoxNev.Name = "textBoxNev";
-            textBoxNev.Size = new Size(203, 23);
-            textBoxNev.TabIndex = 9;
+            this.textBoxNev.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.orderDTOBindingSource, "CustomerName", true));
+            this.textBoxNev.Location = new System.Drawing.Point(145, 23);
+            this.textBoxNev.Name = "textBoxNev";
+            this.textBoxNev.Size = new System.Drawing.Size(175, 20);
+            this.textBoxNev.TabIndex = 9;
             // 
             // textBoxEmail
             // 
-            textBoxEmail.Location = new Point(169, 70);
-            textBoxEmail.Name = "textBoxEmail";
-            textBoxEmail.Size = new Size(203, 23);
-            textBoxEmail.TabIndex = 10;
+            this.textBoxEmail.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.orderDTOBindingSource, "Email", true));
+            this.textBoxEmail.Location = new System.Drawing.Point(145, 61);
+            this.textBoxEmail.Name = "textBoxEmail";
+            this.textBoxEmail.Size = new System.Drawing.Size(175, 20);
+            this.textBoxEmail.TabIndex = 10;
             // 
             // textBoxSzallítasiCim
             // 
-            textBoxSzallítasiCim.Location = new Point(169, 205);
-            textBoxSzallítasiCim.Name = "textBoxSzallítasiCim";
-            textBoxSzallítasiCim.Size = new Size(203, 23);
-            textBoxSzallítasiCim.TabIndex = 11;
+            this.textBoxSzallítasiCim.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.orderDTOBindingSource, "ShippingAddress", true));
+            this.textBoxSzallítasiCim.Location = new System.Drawing.Point(145, 178);
+            this.textBoxSzallítasiCim.Name = "textBoxSzallítasiCim";
+            this.textBoxSzallítasiCim.Size = new System.Drawing.Size(175, 20);
+            this.textBoxSzallítasiCim.TabIndex = 11;
             // 
             // textBoxSzallitasiAr
             // 
-            textBoxSzallitasiAr.Location = new Point(169, 253);
-            textBoxSzallitasiAr.Name = "textBoxSzallitasiAr";
-            textBoxSzallitasiAr.Size = new Size(203, 23);
-            textBoxSzallitasiAr.TabIndex = 12;
+            this.textBoxSzallitasiAr.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.orderDTOBindingSource, "ShippingCost", true));
+            this.textBoxSzallitasiAr.Location = new System.Drawing.Point(145, 219);
+            this.textBoxSzallitasiAr.Name = "textBoxSzallitasiAr";
+            this.textBoxSzallitasiAr.Size = new System.Drawing.Size(175, 20);
+            this.textBoxSzallitasiAr.TabIndex = 12;
             // 
             // textBoxMegrendelesAr
             // 
-            textBoxMegrendelesAr.Location = new Point(169, 298);
-            textBoxMegrendelesAr.Name = "textBoxMegrendelesAr";
-            textBoxMegrendelesAr.Size = new Size(203, 23);
-            textBoxMegrendelesAr.TabIndex = 13;
+            this.textBoxMegrendelesAr.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.orderDTOBindingSource, "OrderTotal", true));
+            this.textBoxMegrendelesAr.Location = new System.Drawing.Point(145, 258);
+            this.textBoxMegrendelesAr.Name = "textBoxMegrendelesAr";
+            this.textBoxMegrendelesAr.Size = new System.Drawing.Size(175, 20);
+            this.textBoxMegrendelesAr.TabIndex = 13;
             // 
             // dateTimePickerDatum
             // 
-            dateTimePickerDatum.Location = new Point(169, 111);
-            dateTimePickerDatum.Name = "dateTimePickerDatum";
-            dateTimePickerDatum.Size = new Size(203, 23);
-            dateTimePickerDatum.TabIndex = 14;
+            this.dateTimePickerDatum.DataBindings.Add(new System.Windows.Forms.Binding("Value", this.orderDTOBindingSource, "OrderDate", true));
+            this.dateTimePickerDatum.Location = new System.Drawing.Point(145, 96);
+            this.dateTimePickerDatum.Name = "dateTimePickerDatum";
+            this.dateTimePickerDatum.Size = new System.Drawing.Size(175, 20);
+            this.dateTimePickerDatum.TabIndex = 14;
             // 
             // comboBoxStatusz
             // 
-            comboBoxStatusz.FormattingEnabled = true;
-            comboBoxStatusz.Location = new Point(169, 157);
-            comboBoxStatusz.Name = "comboBoxStatusz";
-            comboBoxStatusz.Size = new Size(203, 23);
-            comboBoxStatusz.TabIndex = 15;
+            this.comboBoxStatusz.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.orderDTOBindingSource, "Status", true));
+            this.comboBoxStatusz.FormattingEnabled = true;
+            this.comboBoxStatusz.Location = new System.Drawing.Point(145, 136);
+            this.comboBoxStatusz.Name = "comboBoxStatusz";
+            this.comboBoxStatusz.Size = new System.Drawing.Size(175, 21);
+            this.comboBoxStatusz.TabIndex = 15;
             // 
             // buttonCancel
             // 
-            buttonCancel.Location = new Point(154, 461);
-            buttonCancel.Name = "buttonCancel";
-            buttonCancel.Size = new Size(102, 23);
-            buttonCancel.TabIndex = 16;
-            buttonCancel.Text = "Mégse";
-            buttonCancel.UseVisualStyleBackColor = true;
+            this.buttonCancel.Location = new System.Drawing.Point(145, 336);
+            this.buttonCancel.Name = "buttonCancel";
+            this.buttonCancel.Size = new System.Drawing.Size(87, 26);
+            this.buttonCancel.TabIndex = 16;
+            this.buttonCancel.Text = "Mégse";
+            this.buttonCancel.UseVisualStyleBackColor = true;
             // 
             // buttonSave
             // 
-            buttonSave.Location = new Point(277, 461);
-            buttonSave.Name = "buttonSave";
-            buttonSave.Size = new Size(95, 23);
-            buttonSave.TabIndex = 17;
-            buttonSave.Text = "Mentés";
-            buttonSave.UseVisualStyleBackColor = true;
+            this.buttonSave.Location = new System.Drawing.Point(239, 336);
+            this.buttonSave.Name = "buttonSave";
+            this.buttonSave.Size = new System.Drawing.Size(81, 26);
+            this.buttonSave.TabIndex = 17;
+            this.buttonSave.Text = "Mentés";
+            this.buttonSave.UseVisualStyleBackColor = true;
             // 
-            // textBoxTermekek
+            // orderDTOBindingSource
             // 
-            textBoxTermekek.Location = new Point(169, 344);
-            textBoxTermekek.Name = "textBoxTermekek";
-            textBoxTermekek.Size = new Size(203, 23);
-            textBoxTermekek.TabIndex = 18;
-            // 
-            // textBoxMennyiseg
-            // 
-            textBoxMennyiseg.Location = new Point(169, 392);
-            textBoxMennyiseg.Name = "textBoxMennyiseg";
-            textBoxMennyiseg.Size = new Size(203, 23);
-            textBoxMennyiseg.TabIndex = 19;
+            this.orderDTOBindingSource.DataSource = typeof(OrderDTO);
             // 
             // ModForm
             // 
-            AutoScaleDimensions = new SizeF(7F, 15F);
-            AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(397, 496);
-            Controls.Add(textBoxMennyiseg);
-            Controls.Add(textBoxTermekek);
-            Controls.Add(buttonSave);
-            Controls.Add(buttonCancel);
-            Controls.Add(comboBoxStatusz);
-            Controls.Add(dateTimePickerDatum);
-            Controls.Add(textBoxMegrendelesAr);
-            Controls.Add(textBoxSzallitasiAr);
-            Controls.Add(textBoxSzallítasiCim);
-            Controls.Add(textBoxEmail);
-            Controls.Add(textBoxNev);
-            Controls.Add(label9);
-            Controls.Add(label8);
-            Controls.Add(label7);
-            Controls.Add(label6);
-            Controls.Add(label5);
-            Controls.Add(label4);
-            Controls.Add(label3);
-            Controls.Add(label2);
-            Controls.Add(label1);
-            Name = "ModForm";
-            Text = "ModForm";
-            Load += ModForm_Load;
-            ResumeLayout(false);
-            PerformLayout();
+            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
+            this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.ClientSize = new System.Drawing.Size(340, 375);
+            this.Controls.Add(this.buttonSave);
+            this.Controls.Add(this.buttonCancel);
+            this.Controls.Add(this.comboBoxStatusz);
+            this.Controls.Add(this.dateTimePickerDatum);
+            this.Controls.Add(this.textBoxMegrendelesAr);
+            this.Controls.Add(this.textBoxSzallitasiAr);
+            this.Controls.Add(this.textBoxSzallítasiCim);
+            this.Controls.Add(this.textBoxEmail);
+            this.Controls.Add(this.textBoxNev);
+            this.Controls.Add(this.label8);
+            this.Controls.Add(this.label7);
+            this.Controls.Add(this.label6);
+            this.Controls.Add(this.label5);
+            this.Controls.Add(this.label4);
+            this.Controls.Add(this.label3);
+            this.Controls.Add(this.label2);
+            this.Controls.Add(this.label1);
+            this.Name = "ModForm";
+            this.Text = "ModForm";
+            ((System.ComponentModel.ISupportInitialize)(this.orderDTOBindingSource)).EndInit();
+            this.ResumeLayout(false);
+            this.PerformLayout();
 
         }
 
@@ -259,7 +245,6 @@ namespace Rendeleskezelo
         private Label label6;
         private Label label7;
         private Label label8;
-        private Label label9;
         private TextBox textBoxNev;
         private TextBox textBoxEmail;
         private TextBox textBoxSzallítasiCim;
@@ -269,7 +254,6 @@ namespace Rendeleskezelo
         private ComboBox comboBoxStatusz;
         private Button buttonCancel;
         private Button buttonSave;
-        private TextBox textBoxTermekek;
-        private TextBox textBoxMennyiseg;
+        private BindingSource orderDTOBindingSource;
     }
 }

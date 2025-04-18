@@ -84,7 +84,7 @@ namespace Rendeleskezelo
 
         private void buttonModOrder_Click(object sender, EventArgs e)
         {
-            ModForm modForm = new ModForm();
+            ModForm modForm = new ModForm(this.orderDTOBindingSource);
             if (modForm.ShowDialog() == DialogResult.OK)
             {
                 // Handle the case when the dialog result is OK
