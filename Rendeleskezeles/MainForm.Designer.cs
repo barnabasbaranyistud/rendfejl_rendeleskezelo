@@ -88,6 +88,7 @@ namespace Rendeleskezelo
             this.buttonAddOrder.TabIndex = 1;
             this.buttonAddOrder.Text = "Új felvétel";
             this.buttonAddOrder.UseVisualStyleBackColor = true;
+            this.buttonAddOrder.Click += new System.EventHandler(this.buttonAddOrder_Click);
             // 
             // buttonModOrder
             // 

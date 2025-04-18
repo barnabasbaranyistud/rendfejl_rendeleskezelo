@@ -1,6 +1,11 @@
-﻿using Hotcakes.CommerceDTO.v1;
+﻿using ClosedXML.Excel;
+using Hotcakes.CommerceDTO.v1;
 using Hotcakes.CommerceDTO.v1.Client;
+using Hotcakes.CommerceDTO.v1.Contacts;
+using Hotcakes.CommerceDTO.v1.Orders;
 using System;
+using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Windows.Forms;
 using System.Windows.Forms.VisualStyles;
@@ -136,6 +141,84 @@ namespace Rendeleskezelo
                 MessageBox.Show("Nincs kiválasztva rendelés törléshez.", "Figyelmeztetés", MessageBoxButtons.OK, MessageBoxIcon.Warning);
             }
             BetoltesRendelesek();
+        }
+
+        private void ImportOrdersFromExcel()
+        {
+            OpenFileDialog ofd = new OpenFileDialog();
+            if (ofd.ShowDialog() == DialogResult.OK)
+            {
+                var path = ofd.FileName;
+
+                using (var workbook = new XLWorkbook(path))
+                {
+                    var worksheet = workbook.Worksheets.First();
+                    var rows = worksheet.RangeUsed().RowsUsed().Skip(1); // első sor fejléc
+
+                    foreach (var row in rows)
+                    {
+                        string firstName = row.Cell(1).GetString();
+                        string lastName = row.Cell(2).GetString();
+                        string email = row.Cell(3).GetString();
+                        string city = row.Cell(4).GetString();
+                        string line1 = row.Cell(5).GetString();
+                        string postalCode = row.Cell(6).GetString();
+                        string productId = row.Cell(7).GetString();
+                        int quantity = int.Parse(row.Cell(8).GetString());
+
+                        var order = new Hotcakes.CommerceDTO.v1.Orders.OrderDTO
+                        {
+                            BillingAddress = new AddressDTO
+                            {
+                                AddressType = AddressTypesDTO.Billing,
+                                FirstName = firstName,
+                                LastName = lastName,
+                                City = city,
+                                Line1 = line1,
+                                PostalCode = postalCode,
+                                CountryBvin = "ACF84F60-6B00-4131-A5BE-FA202F1EB569", // HUN
+                            },
+                            ShippingAddress = new AddressDTO
+                            {
+                                AddressType = AddressTypesDTO.Shipping,
+                                FirstName = firstName,
+                                LastName = lastName,
+                                City = city,
+                                Line1 = line1,
+                                PostalCode = postalCode,
+                                CountryBvin = "ACF84F60-6B00-4131-A5BE-FA202F1EB569",
+                            },
+                            UserEmail = email,
+                            Items = new List<LineItemDTO>
+                {
+                    new LineItemDTO
+                    {
+                        ProductId = productId,
+                        Quantity = quantity
+                    }
+                }
+                        };
+
+                        // API hívás
+                        Api api = ApiHivas();
+                        var response = api.OrdersCreate(order);
+
+                        if (response.Errors.Any())
+                        {
+                            MessageBox.Show("Hiba a rendelés létrehozásakor: " + string.Join(", ", response.Errors));
+                        }
+                        else
+                        {
+                            MessageBox.Show("Sikeres rendelés: " + response.Content.Bvin);
+                        }
+                    }
+                }
+            }
+        }
+
+        private void buttonAddOrder_Click(object sender, EventArgs e)
+        {
+            ImportOrdersFromExcel();
         }
     }
 }
