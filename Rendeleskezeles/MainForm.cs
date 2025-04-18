@@ -1,4 +1,5 @@
-﻿using Hotcakes.CommerceDTO.v1.Client;
+﻿using Hotcakes.CommerceDTO.v1;
+using Hotcakes.CommerceDTO.v1.Client;
 using System;
 using System.Linq;
 using System.Windows.Forms;
@@ -107,6 +108,33 @@ namespace Rendeleskezelo
 
         private void buttonReload_Click(object sender, EventArgs e)
         {
+            BetoltesRendelesek();
+        }
+
+        private void buttonDelOrder_Click(object sender, EventArgs e)
+        {
+            // Ellenőrzés, hogy van-e aktuálisan kiválasztott rendelés
+            if (orderDTOBindingSource.Current is OrderDTO selectedOrder)
+            {
+                string orderId = selectedOrder.bvin;
+
+                Api proxy = ApiHivas();
+
+                ApiResponse<bool> response = proxy.OrdersDelete(orderId);
+
+                if (response.Content == true && response.Errors.Count == 0)
+                {
+                    MessageBox.Show("A rendelés sikeresen törölve lett.", "Siker", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                }
+                else
+                {
+                    MessageBox.Show("Hiba történt a törlés során:\n" + string.Join("\n", response.Errors), "Hiba", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
+            }
+            else
+            {
+                MessageBox.Show("Nincs kiválasztva rendelés törléshez.", "Figyelmeztetés", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+            }
             BetoltesRendelesek();
         }
     }

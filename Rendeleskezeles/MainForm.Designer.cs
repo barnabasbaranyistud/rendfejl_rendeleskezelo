@@ -109,6 +109,7 @@ namespace Rendeleskezelo
             this.buttonDelOrder.TabIndex = 3;
             this.buttonDelOrder.Text = "Törlés";
             this.buttonDelOrder.UseVisualStyleBackColor = true;
+            this.buttonDelOrder.Click += new System.EventHandler(this.buttonDelOrder_Click);
             // 
             // buttonReload
             // 
