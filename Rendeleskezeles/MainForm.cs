@@ -1,5 +1,8 @@
 ﻿using ClosedXML.Excel;
+using DocumentFormat.OpenXml.Vml;
+using DocumentFormat.OpenXml.Vml.Office;
 using Hotcakes.CommerceDTO.v1;
+using Hotcakes.CommerceDTO.v1.Catalog;
 using Hotcakes.CommerceDTO.v1.Client;
 using Hotcakes.CommerceDTO.v1.Contacts;
 using Hotcakes.CommerceDTO.v1.Orders;
@@ -154,6 +157,7 @@ namespace Rendeleskezelo
                 {
                     var worksheet = workbook.Worksheets.First();
                     var rows = worksheet.RangeUsed().RowsUsed().Skip(1); // első sor fejléc
+                    Api proxy = ApiHivas();
 
                     foreach (var row in rows)
                     {
@@ -165,6 +169,11 @@ namespace Rendeleskezelo
                         string postalCode = row.Cell(6).GetString();
                         string productId = row.Cell(7).GetString();
                         int quantity = int.Parse(row.Cell(8).GetString());
+                        
+                        ApiResponse<ProductDTO> productResponse = proxy.ProductsFind(productId);
+                            decimal unitPrice = productResponse.Content.SitePrice;
+                            decimal total = unitPrice * quantity;
+                            MessageBox.Show(total.ToString());
 
                         var order = new Hotcakes.CommerceDTO.v1.Orders.OrderDTO
                         {
@@ -189,19 +198,28 @@ namespace Rendeleskezelo
                                 CountryBvin = "ACF84F60-6B00-4131-A5BE-FA202F1EB569",
                             },
                             UserEmail = email,
+                            UserID = "1",
+                            StatusCode = "F37EC405-1EC6-4a91-9AC4-6836215FBBBC",
+                            StatusName = "Received",
+                            IsPlaced = true,
+                            PaymentStatus = OrderPaymentStatusDTO.Unpaid,
+                            ShippingStatus = OrderShippingStatusDTO.Unshipped,
+                            ShippingMethodId = "cb834316-87ea-4808-855d-ea56235fad69",
+                            ShippingMethodDisplayName = "Flat rate per order",
+                            ShippingProviderId = "301AA2B8-F43C-42fe-B77E-A7E1CB1DD40E",
+                            TotalGrand = total,
+                            
                             Items = new List<LineItemDTO>
-                {
-                    new LineItemDTO
-                    {
-                        ProductId = productId,
-                        Quantity = quantity
-                    }
-                }
+                            {
+                            new LineItemDTO
+                                {
+                                ProductId = productId,
+                                Quantity = quantity
+                                }
+                            }
                         };
 
-                        // API hívás
-                        Api api = ApiHivas();
-                        var response = api.OrdersCreate(order);
+                        ApiResponse<Hotcakes.CommerceDTO.v1.Orders.OrderDTO> response = proxy.OrdersCreate(order);
 
                         if (response.Errors.Any())
                         {
