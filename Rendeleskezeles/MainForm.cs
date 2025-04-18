@@ -85,13 +85,13 @@ namespace Rendeleskezelo
         private void buttonModOrder_Click(object sender, EventArgs e)
         {
             ModForm modForm = new ModForm(this.orderDTOBindingSource);
-            if (modForm.ShowDialog() == DialogResult.OK)
+            if (modForm.ShowDialog() == DialogResult.Yes)
             {
-                // Handle the case when the dialog result is OK
+                MessageBox.Show("Rendelés módosítva.");
             }
             else
             {
-                // Handle the case when the dialog result is not OK
+                MessageBox.Show("Rendelés nem módosítva.");
             }
         }
 

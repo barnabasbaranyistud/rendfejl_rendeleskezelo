@@ -39,7 +39,6 @@ namespace Rendeleskezelo
             this.label5 = new System.Windows.Forms.Label();
             this.label6 = new System.Windows.Forms.Label();
             this.label7 = new System.Windows.Forms.Label();
-            this.label8 = new System.Windows.Forms.Label();
             this.textBoxNev = new System.Windows.Forms.TextBox();
             this.textBoxEmail = new System.Windows.Forms.TextBox();
             this.textBoxSzallítasiCim = new System.Windows.Forms.TextBox();
@@ -116,17 +115,6 @@ namespace Rendeleskezelo
             this.label7.TabIndex = 6;
             this.label7.Text = "Megrendelés összege:";
             // 
-            // label8
-            // 
-            this.label8.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
-            this.label8.AutoSize = true;
-            this.label8.Location = new System.Drawing.Point(28, 322);
-            this.label8.Name = "label8";
-            this.label8.Size = new System.Drawing.Size(95, 13);
-            this.label8.TabIndex = 7;
-            this.label8.Text = "Rendelt Termékek";
-            this.label8.Click += new System.EventHandler(this.label8_Click);
-            // 
             // textBoxNev
             // 
             this.textBoxNev.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
@@ -201,6 +189,7 @@ namespace Rendeleskezelo
             // buttonCancel
             // 
             this.buttonCancel.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.buttonCancel.DialogResult = System.Windows.Forms.DialogResult.Cancel;
             this.buttonCancel.Location = new System.Drawing.Point(186, 315);
             this.buttonCancel.Name = "buttonCancel";
             this.buttonCancel.Size = new System.Drawing.Size(87, 26);
@@ -217,6 +206,7 @@ namespace Rendeleskezelo
             this.buttonSave.TabIndex = 17;
             this.buttonSave.Text = "Mentés";
             this.buttonSave.UseVisualStyleBackColor = true;
+            this.buttonSave.Click += new System.EventHandler(this.buttonSave_Click);
             // 
             // orderDTOBindingSource
             // 
@@ -236,7 +226,6 @@ namespace Rendeleskezelo
             this.Controls.Add(this.textBoxSzallítasiCim);
             this.Controls.Add(this.textBoxEmail);
             this.Controls.Add(this.textBoxNev);
-            this.Controls.Add(this.label8);
             this.Controls.Add(this.label7);
             this.Controls.Add(this.label6);
             this.Controls.Add(this.label5);
@@ -261,7 +250,6 @@ namespace Rendeleskezelo
         private Label label5;
         private Label label6;
         private Label label7;
-        private Label label8;
         private TextBox textBoxNev;
         private TextBox textBoxEmail;
         private TextBox textBoxSzallítasiCim;
