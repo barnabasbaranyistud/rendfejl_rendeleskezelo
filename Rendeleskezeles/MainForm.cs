@@ -207,7 +207,6 @@ namespace Rendeleskezelo
                             ShippingMethodId = "cb834316-87ea-4808-855d-ea56235fad69",
                             ShippingMethodDisplayName = "Flat rate per order",
                             ShippingProviderId = "301AA2B8-F43C-42fe-B77E-A7E1CB1DD40E",
-                            TotalGrand = total,
                             
                             Items = new List<LineItemDTO>
                             {

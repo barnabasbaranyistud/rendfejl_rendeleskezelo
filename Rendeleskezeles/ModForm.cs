@@ -154,16 +154,6 @@ namespace Rendeleskezelo
             order.StatusName = comboBoxStatusz.Text;
             order.StatusCode = GetStatusCodeFromComboBox(comboBoxStatusz.Text);
 
-            if (decimal.TryParse(textBoxMegrendelesAr.Text, out decimal orderTotal))
-            {
-                order.TotalGrand = orderTotal;
-            }
-
-            if (decimal.TryParse(textBoxSzallitasiAr.Text, out decimal shippingCost))
-            {
-                order.TotalShippingBeforeDiscounts = shippingCost;
-            }
-
             order.TimeOfOrderUtc = dateTimePickerDatum.Value.ToUniversalTime();
 
             // Szállítási cím (parszolni kell a TextBoxból)
