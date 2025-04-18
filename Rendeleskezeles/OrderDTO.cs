@@ -10,6 +10,7 @@ public class OrderDTO
     public string ShippingAddress { get; set; }
     public decimal ShippingCost { get; set; }
     public decimal OrderTotal { get; set; }
+    public string bvin { get; set; }
 
     // Constructor to initialize the DTO based on API response
     public OrderDTO(Hotcakes.CommerceDTO.v1.Orders.OrderSnapshotDTO order)
@@ -22,5 +23,6 @@ public class OrderDTO
         ShippingAddress = $"{order.ShippingAddress.Line1}, {order.ShippingAddress.City}, {order.ShippingAddress.CountryName}, {order.ShippingAddress.PostalCode}";
         ShippingCost = order.TotalShippingBeforeDiscounts; // or the relevant shipping cost field
         OrderTotal = order.TotalGrand;
+        bvin = order.bvin;
     }
 }
