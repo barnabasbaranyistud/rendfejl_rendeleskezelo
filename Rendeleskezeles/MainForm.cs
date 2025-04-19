@@ -169,10 +169,7 @@ namespace Rendeleskezelo
                         string productId = row.Cell(7).GetString();
                         int quantity = int.Parse(row.Cell(8).GetString());
                         
-                        ApiResponse<ProductDTO> productResponse = proxy.ProductsFind(productId);
-                            decimal unitPrice = productResponse.Content.SitePrice;
-                            decimal total = unitPrice * quantity;
-                            MessageBox.Show(total.ToString());
+                        ApiResponse<ProductDTO> product = proxy.ProductsFind(productId);
 
                         var order = new Hotcakes.CommerceDTO.v1.Orders.OrderDTO
                         {
@@ -206,14 +203,18 @@ namespace Rendeleskezelo
                             ShippingMethodId = "cb834316-87ea-4808-855d-ea56235fad69",
                             ShippingMethodDisplayName = "Flat rate per order",
                             ShippingProviderId = "301AA2B8-F43C-42fe-B77E-A7E1CB1DD40E",
-                            TotalGrand = total,
 
                             Items = new List<LineItemDTO>
                             {
                             new LineItemDTO
                                 {
                                 ProductId = productId,
-                                Quantity = quantity
+                                Quantity = quantity,
+                                ProductShortDescription = product.Content.ShortDescription,
+                                ProductName = product.Content.ProductName,
+                                ProductSku = product.Content.Sku,
+                                BasePricePerItem = product.Content.ListPrice,
+                                LineTotal = product.Content.ListPrice * quantity,
                                 }
                             }
                         };
@@ -225,7 +226,7 @@ namespace Rendeleskezelo
                             MessageBox.Show("Hiba a rendelés létrehozásakor: " + string.Join(", ", response.Errors));
                         }
                         else
-                        {
+                        {                            
                             MessageBox.Show("Sikeres rendelés: " + response.Content.Bvin);
                         }
                     }
