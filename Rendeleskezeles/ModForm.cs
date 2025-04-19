@@ -20,7 +20,6 @@ namespace Rendeleskezelo
             InitializeComponent();
             this.StartPosition = FormStartPosition.CenterScreen;
             this.orderDTOBindingSource.DataSource = source.Current;           
-            PopulateStatusComboBox(source);
         }
 
 
@@ -82,20 +81,10 @@ namespace Rendeleskezelo
             }
         }
 
-        private void PopulateStatusComboBox(BindingSource source)
+        public void PopulateStatusComboBox(List<string> items)
         {
-            var statuses = new HashSet<string>();
-
-            foreach (var item in source.List)
-            {
-                if (item is OrderDTO order && !string.IsNullOrWhiteSpace(order.Status))
-                {
-                    statuses.Add(order.Status);
-                }
-            }
-
             comboBoxStatusz.Items.Clear();
-            comboBoxStatusz.Items.AddRange(statuses.ToArray());
+            comboBoxStatusz.Items.AddRange(items.ToArray());
         }
 
         private void label8_Click(object sender, EventArgs e)

@@ -95,6 +95,12 @@ namespace Rendeleskezelo
         private void buttonModOrder_Click(object sender, EventArgs e)
         {
             ModForm modForm = new ModForm(this.orderDTOBindingSource);
+            List<string> itemsFromComboBox = new List<string>();
+            foreach (var item in comboBoxStatus.Items)
+            {
+                itemsFromComboBox.Add(item.ToString());
+            }
+            modForm.PopulateStatusComboBox(itemsFromComboBox);
             modForm.ShowDialog();
         }
 
@@ -256,6 +262,7 @@ namespace Rendeleskezelo
                     }
                 }
             }
+            BetoltesRendelesek();
         }
 
         private void buttonAddOrder_Click(object sender, EventArgs e)
