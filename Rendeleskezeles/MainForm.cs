@@ -64,6 +64,11 @@ namespace Rendeleskezelo
             orderDTOBindingSource.DataSource = filteredOrders;
         }
 
+        private void ShowStatusMessage(string message)
+        {
+            toolStripStatusLabel1.Text = message;
+            statusStrip.Refresh();
+        }
         private void PopulateStatusComboBoxFromApi()
         {
             Api proxy = ApiHivas();
@@ -101,7 +106,10 @@ namespace Rendeleskezelo
                 itemsFromComboBox.Add(item.ToString());
             }
             modForm.PopulateStatusComboBox(itemsFromComboBox);
-            modForm.ShowDialog();
+            if (modForm.ShowDialog() == DialogResult.OK)
+            {
+                ShowStatusMessage("Rendelés módosítva.");
+            }           
         }
 
         private void textBoxCustomerName_TextChanged(object sender, EventArgs e)
@@ -119,11 +127,13 @@ namespace Rendeleskezelo
             comboBoxStatus.SelectedIndex = -1;
             textBoxCustomerName.Clear();
             BetoltesRendelesek();
+            ShowStatusMessage("Rendelések betöltve");
         }
 
         private void buttonReload_Click(object sender, EventArgs e)
         {
             BetoltesRendelesek();
+            ShowStatusMessage("Rendelések betöltve.");
         }
 
         private void buttonDelOrder_Click(object sender, EventArgs e)
@@ -139,7 +149,7 @@ namespace Rendeleskezelo
 
                 if (response.Content == true && response.Errors.Count == 0)
                 {
-                    MessageBox.Show("A rendelés sikeresen törölve lett.", "Siker", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    ShowStatusMessage("A rendelés sikeresen törölve lett.");
                 }
                 else
                 {
@@ -223,7 +233,8 @@ namespace Rendeleskezelo
                                 City = city,
                                 Line1 = line1,
                                 PostalCode = postalCode,
-                                CountryBvin = "ACF84F60-6B00-4131-A5BE-FA202F1EB569", // HUN
+                                CountryBvin = "acf84f60-6b00-4131-a5be-fa202f1eb569", // HUN
+                                CountryName = "Hungary",
                             },
                             ShippingAddress = new AddressDTO
                             {
@@ -233,7 +244,8 @@ namespace Rendeleskezelo
                                 City = city,
                                 Line1 = line1,
                                 PostalCode = postalCode,
-                                CountryBvin = "ACF84F60-6B00-4131-A5BE-FA202F1EB569",
+                                CountryBvin = "acf84f60-6b00-4131-a5be-fa202f1eb569",
+                                CountryName = "Hungary",
                             },
                             UserEmail = email,
                             UserID = "1",
@@ -256,8 +268,8 @@ namespace Rendeleskezelo
                             MessageBox.Show("Hiba a rendelés létrehozásakor: " + string.Join(", ", response.Errors));
                         }
                         else
-                        {                            
-                            MessageBox.Show("Sikeres rendelés: " + response.Content.Bvin);
+                        {
+                            ShowStatusMessage("Sikeres rendelés létrehozás: " + response.Content.Bvin);
                         }
                     }
                 }

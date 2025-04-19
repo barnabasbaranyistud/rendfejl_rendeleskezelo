@@ -33,7 +33,7 @@ namespace Rendeleskezelo
             if (string.IsNullOrWhiteSpace(textBoxEmail.Text) || !IsValidEmail(textBoxEmail.Text))
                 errors.AppendLine("Érvényes e-mail cím megadása kötelező.");
 
-            if (dateTimePickerDatum.Value > DateTime.Now.Date)
+            if (dateTimePickerDatum.Value.Date > DateTime.Now.Date)
                 errors.AppendLine("A rendelés dátuma nem lehet jövőbeli időpont.");
 
             if (comboBoxStatusz.SelectedIndex < 0)
@@ -99,6 +99,7 @@ namespace Rendeleskezelo
             if (ValidateForm())
             {
                 UpdateOrderThroughApi();
+                this.DialogResult = DialogResult.OK;
                 this.Close();
             }
         }

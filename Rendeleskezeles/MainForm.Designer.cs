@@ -33,6 +33,15 @@ namespace Rendeleskezelo
         {
             this.components = new System.ComponentModel.Container();
             this.dataGridViewOrders = new System.Windows.Forms.DataGridView();
+            this.orderIdDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.customerNameDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.emailDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.orderDateDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.statusDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.shippingAddressDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.shippingCostDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.orderTotalDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.orderDTOBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.buttonAddOrder = new System.Windows.Forms.Button();
             this.buttonModOrder = new System.Windows.Forms.Button();
             this.buttonDelOrder = new System.Windows.Forms.Button();
@@ -44,17 +53,10 @@ namespace Rendeleskezelo
             this.label2 = new System.Windows.Forms.Label();
             this.statusStrip = new System.Windows.Forms.StatusStrip();
             this.buttonClear = new System.Windows.Forms.Button();
-            this.orderIdDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.customerNameDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.emailDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.orderDateDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.statusDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.shippingAddressDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.shippingCostDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.orderTotalDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.orderDTOBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.toolStripStatusLabel1 = new System.Windows.Forms.ToolStripStatusLabel();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewOrders)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.orderDTOBindingSource)).BeginInit();
+            this.statusStrip.SuspendLayout();
             this.SuspendLayout();
             // 
             // dataGridViewOrders
@@ -78,6 +80,58 @@ namespace Rendeleskezelo
             this.dataGridViewOrders.RowHeadersWidth = 82;
             this.dataGridViewOrders.Size = new System.Drawing.Size(603, 302);
             this.dataGridViewOrders.TabIndex = 0;
+            // 
+            // orderIdDataGridViewTextBoxColumn
+            // 
+            this.orderIdDataGridViewTextBoxColumn.DataPropertyName = "OrderId";
+            this.orderIdDataGridViewTextBoxColumn.HeaderText = "OrderId";
+            this.orderIdDataGridViewTextBoxColumn.Name = "orderIdDataGridViewTextBoxColumn";
+            // 
+            // customerNameDataGridViewTextBoxColumn
+            // 
+            this.customerNameDataGridViewTextBoxColumn.DataPropertyName = "CustomerName";
+            this.customerNameDataGridViewTextBoxColumn.HeaderText = "CustomerName";
+            this.customerNameDataGridViewTextBoxColumn.Name = "customerNameDataGridViewTextBoxColumn";
+            // 
+            // emailDataGridViewTextBoxColumn
+            // 
+            this.emailDataGridViewTextBoxColumn.DataPropertyName = "Email";
+            this.emailDataGridViewTextBoxColumn.HeaderText = "Email";
+            this.emailDataGridViewTextBoxColumn.Name = "emailDataGridViewTextBoxColumn";
+            // 
+            // orderDateDataGridViewTextBoxColumn
+            // 
+            this.orderDateDataGridViewTextBoxColumn.DataPropertyName = "OrderDate";
+            this.orderDateDataGridViewTextBoxColumn.HeaderText = "OrderDate";
+            this.orderDateDataGridViewTextBoxColumn.Name = "orderDateDataGridViewTextBoxColumn";
+            // 
+            // statusDataGridViewTextBoxColumn
+            // 
+            this.statusDataGridViewTextBoxColumn.DataPropertyName = "Status";
+            this.statusDataGridViewTextBoxColumn.HeaderText = "Status";
+            this.statusDataGridViewTextBoxColumn.Name = "statusDataGridViewTextBoxColumn";
+            // 
+            // shippingAddressDataGridViewTextBoxColumn
+            // 
+            this.shippingAddressDataGridViewTextBoxColumn.DataPropertyName = "ShippingAddress";
+            this.shippingAddressDataGridViewTextBoxColumn.HeaderText = "ShippingAddress";
+            this.shippingAddressDataGridViewTextBoxColumn.Name = "shippingAddressDataGridViewTextBoxColumn";
+            // 
+            // shippingCostDataGridViewTextBoxColumn
+            // 
+            this.shippingCostDataGridViewTextBoxColumn.DataPropertyName = "ShippingCost";
+            this.shippingCostDataGridViewTextBoxColumn.HeaderText = "ShippingCost";
+            this.shippingCostDataGridViewTextBoxColumn.Name = "shippingCostDataGridViewTextBoxColumn";
+            // 
+            // orderTotalDataGridViewTextBoxColumn
+            // 
+            this.orderTotalDataGridViewTextBoxColumn.DataPropertyName = "OrderTotal";
+            this.orderTotalDataGridViewTextBoxColumn.HeaderText = "OrderTotal";
+            this.orderTotalDataGridViewTextBoxColumn.Name = "orderTotalDataGridViewTextBoxColumn";
+            // 
+            // orderDTOBindingSource
+            // 
+            this.orderDTOBindingSource.DataSource = typeof(OrderDTO);
             // 
             // buttonAddOrder
             // 
@@ -174,6 +228,8 @@ namespace Rendeleskezelo
             // statusStrip
             // 
             this.statusStrip.ImageScalingSize = new System.Drawing.Size(32, 32);
+            this.statusStrip.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.toolStripStatusLabel1});
             this.statusStrip.Location = new System.Drawing.Point(0, 440);
             this.statusStrip.Name = "statusStrip";
             this.statusStrip.Padding = new System.Windows.Forms.Padding(1, 0, 12, 0);
@@ -191,57 +247,11 @@ namespace Rendeleskezelo
             this.buttonClear.UseVisualStyleBackColor = true;
             this.buttonClear.Click += new System.EventHandler(this.buttonClear_Click);
             // 
-            // orderIdDataGridViewTextBoxColumn
+            // toolStripStatusLabel1
             // 
-            this.orderIdDataGridViewTextBoxColumn.DataPropertyName = "OrderId";
-            this.orderIdDataGridViewTextBoxColumn.HeaderText = "OrderId";
-            this.orderIdDataGridViewTextBoxColumn.Name = "orderIdDataGridViewTextBoxColumn";
-            // 
-            // customerNameDataGridViewTextBoxColumn
-            // 
-            this.customerNameDataGridViewTextBoxColumn.DataPropertyName = "CustomerName";
-            this.customerNameDataGridViewTextBoxColumn.HeaderText = "CustomerName";
-            this.customerNameDataGridViewTextBoxColumn.Name = "customerNameDataGridViewTextBoxColumn";
-            // 
-            // emailDataGridViewTextBoxColumn
-            // 
-            this.emailDataGridViewTextBoxColumn.DataPropertyName = "Email";
-            this.emailDataGridViewTextBoxColumn.HeaderText = "Email";
-            this.emailDataGridViewTextBoxColumn.Name = "emailDataGridViewTextBoxColumn";
-            // 
-            // orderDateDataGridViewTextBoxColumn
-            // 
-            this.orderDateDataGridViewTextBoxColumn.DataPropertyName = "OrderDate";
-            this.orderDateDataGridViewTextBoxColumn.HeaderText = "OrderDate";
-            this.orderDateDataGridViewTextBoxColumn.Name = "orderDateDataGridViewTextBoxColumn";
-            // 
-            // statusDataGridViewTextBoxColumn
-            // 
-            this.statusDataGridViewTextBoxColumn.DataPropertyName = "Status";
-            this.statusDataGridViewTextBoxColumn.HeaderText = "Status";
-            this.statusDataGridViewTextBoxColumn.Name = "statusDataGridViewTextBoxColumn";
-            // 
-            // shippingAddressDataGridViewTextBoxColumn
-            // 
-            this.shippingAddressDataGridViewTextBoxColumn.DataPropertyName = "ShippingAddress";
-            this.shippingAddressDataGridViewTextBoxColumn.HeaderText = "ShippingAddress";
-            this.shippingAddressDataGridViewTextBoxColumn.Name = "shippingAddressDataGridViewTextBoxColumn";
-            // 
-            // shippingCostDataGridViewTextBoxColumn
-            // 
-            this.shippingCostDataGridViewTextBoxColumn.DataPropertyName = "ShippingCost";
-            this.shippingCostDataGridViewTextBoxColumn.HeaderText = "ShippingCost";
-            this.shippingCostDataGridViewTextBoxColumn.Name = "shippingCostDataGridViewTextBoxColumn";
-            // 
-            // orderTotalDataGridViewTextBoxColumn
-            // 
-            this.orderTotalDataGridViewTextBoxColumn.DataPropertyName = "OrderTotal";
-            this.orderTotalDataGridViewTextBoxColumn.HeaderText = "OrderTotal";
-            this.orderTotalDataGridViewTextBoxColumn.Name = "orderTotalDataGridViewTextBoxColumn";
-            // 
-            // orderDTOBindingSource
-            // 
-            this.orderDTOBindingSource.DataSource = typeof(OrderDTO);
+            this.toolStripStatusLabel1.Name = "toolStripStatusLabel1";
+            this.toolStripStatusLabel1.Size = new System.Drawing.Size(112, 17);
+            this.toolStripStatusLabel1.Text = "toolStripStatusLabel";
             // 
             // MainForm
             // 
@@ -266,6 +276,8 @@ namespace Rendeleskezelo
             this.Text = "Rendelések kezelése";
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewOrders)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.orderDTOBindingSource)).EndInit();
+            this.statusStrip.ResumeLayout(false);
+            this.statusStrip.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -294,5 +306,6 @@ namespace Rendeleskezelo
         private DataGridViewTextBoxColumn orderTotalDataGridViewTextBoxColumn;
         private BindingSource orderDTOBindingSource;
         private Button buttonClear;
+        private ToolStripStatusLabel toolStripStatusLabel1;
     }
 }
