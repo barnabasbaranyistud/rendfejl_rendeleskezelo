@@ -47,12 +47,6 @@ namespace Rendeleskezelo
                 errors.AppendLine("A szállítási cím nem megfelelő formátumú. Példa: 'Fővám tér 8, Budapest, Hungary, 1098'");
             }
 
-            if (!decimal.TryParse(textBoxSzallitasiAr.Text, out decimal shippingCost) || shippingCost < 0)
-                errors.AppendLine("A szállítási költség csak pozitív szám lehet.");
-
-            if (!decimal.TryParse(textBoxMegrendelesAr.Text, out decimal orderTotal) || orderTotal < 0)
-                errors.AppendLine("A rendelés végösszege csak pozitív szám lehet.");
-
             if (errors.Length > 0)
             {
                 MessageBox.Show(errors.ToString(), "Hibás adatok", MessageBoxButtons.OK, MessageBoxIcon.Warning);
@@ -166,6 +160,11 @@ namespace Rendeleskezelo
                 MessageBox.Show("Hiba történt a frissítés során: " + errorMessages);
             }
 
+        }
+
+        private void buttonProducts_Click(object sender, EventArgs e)
+        {
+            ProductsForm prodForm = new ProductsForm(this.orderDTOBindingSource);
         }
     }
 }

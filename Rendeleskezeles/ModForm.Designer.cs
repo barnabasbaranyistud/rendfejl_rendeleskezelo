@@ -37,17 +37,16 @@ namespace Rendeleskezelo
             this.label3 = new System.Windows.Forms.Label();
             this.label4 = new System.Windows.Forms.Label();
             this.label5 = new System.Windows.Forms.Label();
-            this.label6 = new System.Windows.Forms.Label();
             this.label7 = new System.Windows.Forms.Label();
             this.textBoxNev = new System.Windows.Forms.TextBox();
             this.textBoxEmail = new System.Windows.Forms.TextBox();
             this.textBoxSzallítasiCim = new System.Windows.Forms.TextBox();
-            this.textBoxSzallitasiAr = new System.Windows.Forms.TextBox();
-            this.textBoxMegrendelesAr = new System.Windows.Forms.TextBox();
             this.dateTimePickerDatum = new System.Windows.Forms.DateTimePicker();
             this.comboBoxStatusz = new System.Windows.Forms.ComboBox();
             this.buttonCancel = new System.Windows.Forms.Button();
             this.buttonSave = new System.Windows.Forms.Button();
+            this.labelGrand = new System.Windows.Forms.Label();
+            this.buttonProducts = new System.Windows.Forms.Button();
             this.orderDTOBindingSource = new System.Windows.Forms.BindingSource(this.components);
             ((System.ComponentModel.ISupportInitialize)(this.orderDTOBindingSource)).BeginInit();
             this.SuspendLayout();
@@ -97,19 +96,10 @@ namespace Rendeleskezelo
             this.label5.TabIndex = 4;
             this.label5.Text = "Szállítási cím:";
             // 
-            // label6
-            // 
-            this.label6.AutoSize = true;
-            this.label6.Location = new System.Drawing.Point(26, 222);
-            this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(68, 13);
-            this.label6.TabIndex = 5;
-            this.label6.Text = "Szállítás ára:";
-            // 
             // label7
             // 
             this.label7.AutoSize = true;
-            this.label7.Location = new System.Drawing.Point(26, 261);
+            this.label7.Location = new System.Drawing.Point(26, 216);
             this.label7.Name = "label7";
             this.label7.Size = new System.Drawing.Size(113, 13);
             this.label7.TabIndex = 6;
@@ -145,26 +135,6 @@ namespace Rendeleskezelo
             this.textBoxSzallítasiCim.Size = new System.Drawing.Size(212, 20);
             this.textBoxSzallítasiCim.TabIndex = 11;
             // 
-            // textBoxSzallitasiAr
-            // 
-            this.textBoxSzallitasiAr.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.textBoxSzallitasiAr.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.orderDTOBindingSource, "ShippingCost", true));
-            this.textBoxSzallitasiAr.Location = new System.Drawing.Point(148, 219);
-            this.textBoxSzallitasiAr.Name = "textBoxSzallitasiAr";
-            this.textBoxSzallitasiAr.Size = new System.Drawing.Size(212, 20);
-            this.textBoxSzallitasiAr.TabIndex = 12;
-            // 
-            // textBoxMegrendelesAr
-            // 
-            this.textBoxMegrendelesAr.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.textBoxMegrendelesAr.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.orderDTOBindingSource, "OrderTotal", true));
-            this.textBoxMegrendelesAr.Location = new System.Drawing.Point(148, 258);
-            this.textBoxMegrendelesAr.Name = "textBoxMegrendelesAr";
-            this.textBoxMegrendelesAr.Size = new System.Drawing.Size(212, 20);
-            this.textBoxMegrendelesAr.TabIndex = 13;
-            // 
             // dateTimePickerDatum
             // 
             this.dateTimePickerDatum.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
@@ -190,7 +160,7 @@ namespace Rendeleskezelo
             // 
             this.buttonCancel.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.buttonCancel.DialogResult = System.Windows.Forms.DialogResult.Cancel;
-            this.buttonCancel.Location = new System.Drawing.Point(186, 315);
+            this.buttonCancel.Location = new System.Drawing.Point(186, 256);
             this.buttonCancel.Name = "buttonCancel";
             this.buttonCancel.Size = new System.Drawing.Size(87, 26);
             this.buttonCancel.TabIndex = 16;
@@ -200,13 +170,35 @@ namespace Rendeleskezelo
             // buttonSave
             // 
             this.buttonSave.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.buttonSave.Location = new System.Drawing.Point(279, 315);
+            this.buttonSave.Location = new System.Drawing.Point(279, 256);
             this.buttonSave.Name = "buttonSave";
             this.buttonSave.Size = new System.Drawing.Size(81, 26);
             this.buttonSave.TabIndex = 17;
             this.buttonSave.Text = "Mentés";
             this.buttonSave.UseVisualStyleBackColor = true;
             this.buttonSave.Click += new System.EventHandler(this.buttonSave_Click);
+            // 
+            // labelGrand
+            // 
+            this.labelGrand.AutoSize = true;
+            this.labelGrand.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.orderDTOBindingSource, "OrderTotal", true));
+            this.labelGrand.Location = new System.Drawing.Point(161, 216);
+            this.labelGrand.Name = "labelGrand";
+            this.labelGrand.Size = new System.Drawing.Size(16, 13);
+            this.labelGrand.TabIndex = 18;
+            this.labelGrand.Text = "Ft";
+            // 
+            // buttonProducts
+            // 
+            this.buttonProducts.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+            this.buttonProducts.Location = new System.Drawing.Point(29, 257);
+            this.buttonProducts.Name = "buttonProducts";
+            this.buttonProducts.Size = new System.Drawing.Size(70, 26);
+            this.buttonProducts.TabIndex = 19;
+            this.buttonProducts.Text = "Részletek";
+            this.buttonProducts.UseVisualStyleBackColor = true;
+            this.buttonProducts.Visible = false;
+            this.buttonProducts.Click += new System.EventHandler(this.buttonProducts_Click);
             // 
             // orderDTOBindingSource
             // 
@@ -216,18 +208,17 @@ namespace Rendeleskezelo
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(380, 354);
+            this.ClientSize = new System.Drawing.Size(380, 295);
+            this.Controls.Add(this.buttonProducts);
+            this.Controls.Add(this.labelGrand);
             this.Controls.Add(this.buttonSave);
             this.Controls.Add(this.buttonCancel);
             this.Controls.Add(this.comboBoxStatusz);
             this.Controls.Add(this.dateTimePickerDatum);
-            this.Controls.Add(this.textBoxMegrendelesAr);
-            this.Controls.Add(this.textBoxSzallitasiAr);
             this.Controls.Add(this.textBoxSzallítasiCim);
             this.Controls.Add(this.textBoxEmail);
             this.Controls.Add(this.textBoxNev);
             this.Controls.Add(this.label7);
-            this.Controls.Add(this.label6);
             this.Controls.Add(this.label5);
             this.Controls.Add(this.label4);
             this.Controls.Add(this.label3);
@@ -248,17 +239,16 @@ namespace Rendeleskezelo
         private Label label3;
         private Label label4;
         private Label label5;
-        private Label label6;
         private Label label7;
         private TextBox textBoxNev;
         private TextBox textBoxEmail;
         private TextBox textBoxSzallítasiCim;
-        private TextBox textBoxSzallitasiAr;
-        private TextBox textBoxMegrendelesAr;
         private DateTimePicker dateTimePickerDatum;
         private ComboBox comboBoxStatusz;
         private Button buttonCancel;
         private Button buttonSave;
         private BindingSource orderDTOBindingSource;
+        private Label labelGrand;
+        private Button buttonProducts;
     }
 }
