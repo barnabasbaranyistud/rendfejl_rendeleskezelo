@@ -168,6 +168,7 @@ namespace Rendeleskezelo
                         string postalCode = row.Cell(6).GetString();
                         string productId = row.Cell(7).GetString();
                         int quantity = int.Parse(row.Cell(8).GetString());
+
                         
                         ApiResponse<ProductDTO> product = proxy.ProductsFind(productId);
 
