@@ -1,4 +1,5 @@
 ﻿using ClosedXML.Excel;
+using DocumentFormat.OpenXml.Spreadsheet;
 using DocumentFormat.OpenXml.Vml;
 using DocumentFormat.OpenXml.Vml.Office;
 using Hotcakes.CommerceDTO.v1;
@@ -166,11 +167,44 @@ namespace Rendeleskezelo
                         string city = row.Cell(4).GetString();
                         string line1 = row.Cell(5).GetString();
                         string postalCode = row.Cell(6).GetString();
-                        string productId = row.Cell(7).GetString();
-                        int quantity = int.Parse(row.Cell(8).GetString());
+                        string[] productIds = row.Cell(7).GetString().Split(',');
+                        string[] quantities = row.Cell(8).GetString().Split(',');
 
-                        
-                        ApiResponse<ProductDTO> product = proxy.ProductsFind(productId);
+                        if (productIds.Length != quantities.Length)
+                        {
+                            MessageBox.Show("A termékazonosítók és mennyiségek száma nem egyezik meg.");
+                            continue;
+                        }
+
+                        var items = new List<LineItemDTO>();
+
+                        for (int i = 0; i < productIds.Length; i++)
+                        {
+                            string productId = productIds[i].Trim();
+                            if (!int.TryParse(quantities[i].Trim(), out int quantity))
+                            {
+                                MessageBox.Show($"Érvénytelen mennyiség: {quantities[i]}");
+                                continue;
+                            }
+
+                            ApiResponse<ProductDTO> product = proxy.ProductsFind(productId);
+
+                            if (product.Content == null)
+                            {
+                                MessageBox.Show($"Nem található termék azonosítóval: {productId}");
+                                continue;
+                            }
+
+                            items.Add(new LineItemDTO
+                            {
+                                ProductId = productId,
+                                Quantity = quantity,
+                                ProductShortDescription = product.Content.ShortDescription,
+                                ProductName = product.Content.ProductName,
+                                ProductSku = product.Content.Sku,
+                                BasePricePerItem = product.Content.ListPrice
+                            });
+                        }
 
                         var order = new Hotcakes.CommerceDTO.v1.Orders.OrderDTO
                         {
@@ -205,19 +239,7 @@ namespace Rendeleskezelo
                             ShippingMethodDisplayName = "Flat rate per order",
                             ShippingProviderId = "301AA2B8-F43C-42fe-B77E-A7E1CB1DD40E",
 
-                            Items = new List<LineItemDTO>
-                            {
-                            new LineItemDTO
-                                {
-                                ProductId = productId,
-                                Quantity = quantity,
-                                ProductShortDescription = product.Content.ShortDescription,
-                                ProductName = product.Content.ProductName,
-                                ProductSku = product.Content.Sku,
-                                BasePricePerItem = product.Content.ListPrice,
-                                LineTotal = product.Content.ListPrice * quantity,
-                                }
-                            }
+                            Items = items
                         };
 
                         ApiResponse<Hotcakes.CommerceDTO.v1.Orders.OrderDTO> response = proxy.OrdersCreate(order);
