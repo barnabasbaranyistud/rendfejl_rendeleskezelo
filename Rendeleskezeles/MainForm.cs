@@ -202,7 +202,8 @@ namespace Rendeleskezelo
                                 ProductShortDescription = product.Content.ShortDescription,
                                 ProductName = product.Content.ProductName,
                                 ProductSku = product.Content.Sku,
-                                BasePricePerItem = product.Content.ListPrice
+                                BasePricePerItem = product.Content.ListPrice,
+                                LineTotal = product.Content.ListPrice * quantity,
                             });
                         }
 
