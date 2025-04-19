@@ -3,8 +3,6 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.12.35527.113
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Rendeleskezelo_v0_failed", "Rendeleskezelo\Rendeleskezelo_v0_failed.csproj", "{77AA02CE-8E6C-455B-9158-CD86D83CB13D}"
-EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Rendeleskezeles", "Rendeleskezeles\Rendeleskezeles.csproj", "{16D29FFA-829A-4583-BD20-8375A307F0C7}"
 EndProject
 Global
@@ -13,10 +11,6 @@ Global
 		Release|Any CPU = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
-		{77AA02CE-8E6C-455B-9158-CD86D83CB13D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{77AA02CE-8E6C-455B-9158-CD86D83CB13D}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{77AA02CE-8E6C-455B-9158-CD86D83CB13D}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{77AA02CE-8E6C-455B-9158-CD86D83CB13D}.Release|Any CPU.Build.0 = Release|Any CPU
 		{16D29FFA-829A-4583-BD20-8375A307F0C7}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{16D29FFA-829A-4583-BD20-8375A307F0C7}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{16D29FFA-829A-4583-BD20-8375A307F0C7}.Release|Any CPU.ActiveCfg = Release|Any CPU
