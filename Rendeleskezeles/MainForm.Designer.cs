@@ -57,6 +57,7 @@ namespace Rendeleskezelo
             this.orderDTOBindingSource = new System.Windows.Forms.BindingSource(this.components);
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewOrders)).BeginInit();
             this.statusStrip.SuspendLayout();
+            this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.orderDTOBindingSource)).BeginInit();
             this.SuspendLayout();
             // 
@@ -87,9 +88,11 @@ namespace Rendeleskezelo
             // buttonAddOrder
             // 
             this.buttonAddOrder.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
-            this.buttonAddOrder.BackColor = System.Drawing.Color.DeepSkyBlue;
+            this.buttonAddOrder.BackColor = System.Drawing.Color.LightSkyBlue;
             this.buttonAddOrder.FlatAppearance.BorderColor = System.Drawing.Color.DeepSkyBlue;
+            this.buttonAddOrder.FlatAppearance.BorderSize = 0;
             this.buttonAddOrder.FlatAppearance.MouseOverBackColor = System.Drawing.Color.LightSkyBlue;
+            this.buttonAddOrder.ForeColor = System.Drawing.Color.White;
             this.buttonAddOrder.Location = new System.Drawing.Point(54, 160);
             this.buttonAddOrder.Margin = new System.Windows.Forms.Padding(6, 4, 6, 4);
             this.buttonAddOrder.Name = "buttonAddOrder";
@@ -102,9 +105,11 @@ namespace Rendeleskezelo
             // buttonModOrder
             // 
             this.buttonModOrder.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
-            this.buttonModOrder.BackColor = System.Drawing.Color.DeepSkyBlue;
+            this.buttonModOrder.BackColor = System.Drawing.Color.LightSkyBlue;
             this.buttonModOrder.FlatAppearance.BorderColor = System.Drawing.Color.DeepSkyBlue;
+            this.buttonModOrder.FlatAppearance.BorderSize = 0;
             this.buttonModOrder.FlatAppearance.MouseOverBackColor = System.Drawing.Color.LightSkyBlue;
+            this.buttonModOrder.ForeColor = System.Drawing.Color.White;
             this.buttonModOrder.Location = new System.Drawing.Point(259, 160);
             this.buttonModOrder.Margin = new System.Windows.Forms.Padding(6, 4, 6, 4);
             this.buttonModOrder.Name = "buttonModOrder";
@@ -117,9 +122,11 @@ namespace Rendeleskezelo
             // buttonDelOrder
             // 
             this.buttonDelOrder.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
-            this.buttonDelOrder.BackColor = System.Drawing.Color.DeepSkyBlue;
+            this.buttonDelOrder.BackColor = System.Drawing.Color.LightSkyBlue;
             this.buttonDelOrder.FlatAppearance.BorderColor = System.Drawing.Color.DeepSkyBlue;
+            this.buttonDelOrder.FlatAppearance.BorderSize = 0;
             this.buttonDelOrder.FlatAppearance.MouseOverBackColor = System.Drawing.Color.LightSkyBlue;
+            this.buttonDelOrder.ForeColor = System.Drawing.Color.White;
             this.buttonDelOrder.Location = new System.Drawing.Point(464, 160);
             this.buttonDelOrder.Margin = new System.Windows.Forms.Padding(6, 4, 6, 4);
             this.buttonDelOrder.Name = "buttonDelOrder";
@@ -132,9 +139,11 @@ namespace Rendeleskezelo
             // buttonReload
             // 
             this.buttonReload.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
-            this.buttonReload.BackColor = System.Drawing.Color.DeepSkyBlue;
+            this.buttonReload.BackColor = System.Drawing.Color.LightSkyBlue;
             this.buttonReload.FlatAppearance.BorderColor = System.Drawing.Color.DeepSkyBlue;
+            this.buttonReload.FlatAppearance.BorderSize = 0;
             this.buttonReload.FlatAppearance.MouseOverBackColor = System.Drawing.Color.LightSkyBlue;
+            this.buttonReload.ForeColor = System.Drawing.Color.White;
             this.buttonReload.Location = new System.Drawing.Point(678, 160);
             this.buttonReload.Margin = new System.Windows.Forms.Padding(6, 4, 6, 4);
             this.buttonReload.Name = "buttonReload";
@@ -148,7 +157,7 @@ namespace Rendeleskezelo
             // 
             this.buttonSignOut.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.buttonSignOut.BackColor = System.Drawing.Color.DeepSkyBlue;
+            this.buttonSignOut.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
             this.buttonSignOut.FlatAppearance.BorderColor = System.Drawing.Color.DeepSkyBlue;
             this.buttonSignOut.FlatAppearance.BorderSize = 0;
             this.buttonSignOut.FlatAppearance.MouseOverBackColor = System.Drawing.Color.LightSkyBlue;
@@ -187,10 +196,11 @@ namespace Rendeleskezelo
             this.label1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             this.label1.AutoSize = true;
             this.label1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
-            this.label1.Location = new System.Drawing.Point(54, 52);
+            this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.875F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label1.Location = new System.Drawing.Point(39, 57);
             this.label1.Margin = new System.Windows.Forms.Padding(6, 0, 6, 0);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(161, 25);
+            this.label1.Size = new System.Drawing.Size(176, 25);
             this.label1.TabIndex = 8;
             this.label1.Text = "Ügyfél keresés:";
             // 
@@ -199,10 +209,11 @@ namespace Rendeleskezelo
             this.label2.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             this.label2.AutoSize = true;
             this.label2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
-            this.label2.Location = new System.Drawing.Point(594, 52);
+            this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.875F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label2.Location = new System.Drawing.Point(586, 57);
             this.label2.Margin = new System.Windows.Forms.Padding(6, 0, 6, 0);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(90, 25);
+            this.label2.Size = new System.Drawing.Size(98, 25);
             this.label2.TabIndex = 9;
             this.label2.Text = "Státusz:";
             // 
@@ -227,10 +238,12 @@ namespace Rendeleskezelo
             // buttonClear
             // 
             this.buttonClear.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
-            this.buttonClear.BackColor = System.Drawing.Color.DeepSkyBlue;
+            this.buttonClear.BackColor = System.Drawing.Color.LightSkyBlue;
             this.buttonClear.FlatAppearance.BorderColor = System.Drawing.Color.DeepSkyBlue;
+            this.buttonClear.FlatAppearance.BorderSize = 0;
             this.buttonClear.FlatAppearance.MouseOverBackColor = System.Drawing.Color.LightSkyBlue;
-            this.buttonClear.Location = new System.Drawing.Point(944, 42);
+            this.buttonClear.ForeColor = System.Drawing.Color.White;
+            this.buttonClear.Location = new System.Drawing.Point(938, 47);
             this.buttonClear.Margin = new System.Windows.Forms.Padding(6, 6, 6, 6);
             this.buttonClear.Name = "buttonClear";
             this.buttonClear.Size = new System.Drawing.Size(150, 44);
@@ -245,6 +258,9 @@ namespace Rendeleskezelo
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.panel1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
+            this.panel1.Controls.Add(this.buttonClear);
+            this.panel1.Controls.Add(this.label1);
+            this.panel1.Controls.Add(this.label2);
             this.panel1.Location = new System.Drawing.Point(0, -8);
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(1326, 118);
@@ -324,10 +340,7 @@ namespace Rendeleskezelo
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.Window;
             this.ClientSize = new System.Drawing.Size(1326, 888);
-            this.Controls.Add(this.buttonClear);
             this.Controls.Add(this.statusStrip);
-            this.Controls.Add(this.label2);
-            this.Controls.Add(this.label1);
             this.Controls.Add(this.textBoxCustomerName);
             this.Controls.Add(this.comboBoxStatus);
             this.Controls.Add(this.buttonSignOut);
@@ -343,6 +356,8 @@ namespace Rendeleskezelo
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewOrders)).EndInit();
             this.statusStrip.ResumeLayout(false);
             this.statusStrip.PerformLayout();
+            this.panel1.ResumeLayout(false);
+            this.panel1.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.orderDTOBindingSource)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
