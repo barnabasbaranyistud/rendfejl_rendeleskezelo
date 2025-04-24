@@ -24,21 +24,18 @@ namespace Rendeleskezelo
             this.StartPosition = FormStartPosition.CenterScreen;
         }
 
-        private async void buttonLogin_Click(object sender, EventArgs e)
+        private void buttonLogin_Click(object sender, EventArgs e)
         {
             string username = txtUsername.Text;
             string password = txtPassword.Text;
 
-            var loginSuccess = await LoginAsync(username, password);
-
-            if (loginSuccess)
+            if (username == "a" && password == "a")
             {
-                // Bejelentkezés sikeres, folytasd a munkát
-                MessageBox.Show("Login successful!");
+                this.DialogResult = DialogResult.OK;
             }
             else
             {
-                // Bejelentkezés nem sikerült
+                lblError.Text = "Hibás név vagy jelszó.";
                 MessageBox.Show("Login failed.");
             }
         }
