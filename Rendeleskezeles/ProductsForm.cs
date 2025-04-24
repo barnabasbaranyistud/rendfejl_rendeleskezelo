@@ -116,7 +116,7 @@ namespace Rendeleskezeles
                 MessageBox.Show($"Nem található termék azonosítóval: {productId}");
             }
 
-            var items = new List<LineItemDTO>();
+            var items = order.Items;
 
             items.Add(new LineItemDTO
             {
