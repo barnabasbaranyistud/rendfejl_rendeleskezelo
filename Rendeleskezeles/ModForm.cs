@@ -166,6 +166,14 @@ namespace Rendeleskezelo
         private void buttonProducts_Click(object sender, EventArgs e)
         {
             ProductsForm prodForm = new ProductsForm(this.orderDTOBindingSource);
+            if (prodForm.ShowDialog() == DialogResult.OK)
+            {
+                // Handle the case when the dialog result is OK
+            }
+            else
+            {
+                // Handle the case when the dialog result is not OK
+            }
         }
     }
 }

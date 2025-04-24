@@ -33,11 +33,13 @@
             this.listBoxOrdered = new System.Windows.Forms.ListBox();
             this.listBoxProducts = new System.Windows.Forms.ListBox();
             this.textBoxFilter = new System.Windows.Forms.TextBox();
-            this.button1 = new System.Windows.Forms.Button();
-            this.button2 = new System.Windows.Forms.Button();
+            this.buttonRemove = new System.Windows.Forms.Button();
+            this.buttonAdd = new System.Windows.Forms.Button();
             this.textBoxQuantity = new System.Windows.Forms.TextBox();
             this.label1 = new System.Windows.Forms.Label();
-            this.labelDarab = new System.Windows.Forms.Label();
+            this.labelQuantity = new System.Windows.Forms.Label();
+            this.buttonSave = new System.Windows.Forms.Button();
+            this.buttonCancel = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.orderDTOBindingSource)).BeginInit();
             this.SuspendLayout();
             // 
@@ -52,80 +54,108 @@
             this.listBoxOrdered.Name = "listBoxOrdered";
             this.listBoxOrdered.Size = new System.Drawing.Size(170, 368);
             this.listBoxOrdered.TabIndex = 0;
+            this.listBoxOrdered.SelectedIndexChanged += new System.EventHandler(this.listBoxOrdered_SelectedIndexChanged);
             // 
             // listBoxProducts
             // 
             this.listBoxProducts.FormattingEnabled = true;
-            this.listBoxProducts.Location = new System.Drawing.Point(354, 60);
+            this.listBoxProducts.Location = new System.Drawing.Point(400, 60);
             this.listBoxProducts.Name = "listBoxProducts";
             this.listBoxProducts.Size = new System.Drawing.Size(170, 368);
             this.listBoxProducts.TabIndex = 1;
             // 
             // textBoxFilter
             // 
-            this.textBoxFilter.Location = new System.Drawing.Point(354, 25);
+            this.textBoxFilter.Location = new System.Drawing.Point(400, 25);
             this.textBoxFilter.Name = "textBoxFilter";
             this.textBoxFilter.Size = new System.Drawing.Size(170, 20);
             this.textBoxFilter.TabIndex = 2;
+            this.textBoxFilter.TextChanged += new System.EventHandler(this.textBoxFilter_TextChanged);
             // 
-            // button1
+            // buttonRemove
             // 
-            this.button1.Location = new System.Drawing.Point(240, 101);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(75, 23);
-            this.button1.TabIndex = 3;
-            this.button1.Text = ">>>";
-            this.button1.UseVisualStyleBackColor = true;
+            this.buttonRemove.Location = new System.Drawing.Point(260, 101);
+            this.buttonRemove.Name = "buttonRemove";
+            this.buttonRemove.Size = new System.Drawing.Size(75, 23);
+            this.buttonRemove.TabIndex = 3;
+            this.buttonRemove.Text = ">>>";
+            this.buttonRemove.UseVisualStyleBackColor = true;
+            this.buttonRemove.Click += new System.EventHandler(this.buttonRemove_Click);
             // 
-            // button2
+            // buttonAdd
             // 
-            this.button2.Location = new System.Drawing.Point(240, 130);
-            this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(75, 23);
-            this.button2.TabIndex = 4;
-            this.button2.Text = "<<<";
-            this.button2.UseVisualStyleBackColor = true;
+            this.buttonAdd.Location = new System.Drawing.Point(260, 130);
+            this.buttonAdd.Name = "buttonAdd";
+            this.buttonAdd.Size = new System.Drawing.Size(75, 23);
+            this.buttonAdd.TabIndex = 4;
+            this.buttonAdd.Text = "<<<";
+            this.buttonAdd.UseVisualStyleBackColor = true;
+            this.buttonAdd.Click += new System.EventHandler(this.buttonAdd_Click);
             // 
             // textBoxQuantity
             // 
-            this.textBoxQuantity.Location = new System.Drawing.Point(240, 159);
+            this.textBoxQuantity.Location = new System.Drawing.Point(260, 159);
             this.textBoxQuantity.Name = "textBoxQuantity";
             this.textBoxQuantity.Size = new System.Drawing.Size(75, 20);
             this.textBoxQuantity.TabIndex = 5;
+            this.textBoxQuantity.Text = "0";
+            this.textBoxQuantity.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
             // label1
             // 
             this.label1.AutoSize = true;
             this.label1.Location = new System.Drawing.Point(28, 25);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(120, 13);
+            this.label1.Size = new System.Drawing.Size(0, 13);
             this.label1.TabIndex = 6;
-            this.label1.Text = "Kiválasztott termék (db):";
             // 
-            // labelDarab
+            // labelQuantity
             // 
-            this.labelDarab.AutoSize = true;
-            this.labelDarab.Location = new System.Drawing.Point(154, 25);
-            this.labelDarab.Name = "labelDarab";
-            this.labelDarab.Size = new System.Drawing.Size(19, 13);
-            this.labelDarab.TabIndex = 7;
-            this.labelDarab.Text = "db";
+            this.labelQuantity.AutoSize = true;
+            this.labelQuantity.Location = new System.Drawing.Point(34, 28);
+            this.labelQuantity.Name = "labelQuantity";
+            this.labelQuantity.Size = new System.Drawing.Size(19, 13);
+            this.labelQuantity.TabIndex = 7;
+            this.labelQuantity.Text = "db";
+            // 
+            // buttonSave
+            // 
+            this.buttonSave.DialogResult = System.Windows.Forms.DialogResult.OK;
+            this.buttonSave.Location = new System.Drawing.Point(310, 405);
+            this.buttonSave.Name = "buttonSave";
+            this.buttonSave.Size = new System.Drawing.Size(75, 23);
+            this.buttonSave.TabIndex = 8;
+            this.buttonSave.Text = "Mentés";
+            this.buttonSave.UseVisualStyleBackColor = true;
+            // 
+            // buttonCancel
+            // 
+            this.buttonCancel.DialogResult = System.Windows.Forms.DialogResult.Cancel;
+            this.buttonCancel.Location = new System.Drawing.Point(215, 405);
+            this.buttonCancel.Name = "buttonCancel";
+            this.buttonCancel.Size = new System.Drawing.Size(75, 23);
+            this.buttonCancel.TabIndex = 9;
+            this.buttonCancel.Text = "Mégse";
+            this.buttonCancel.UseVisualStyleBackColor = true;
             // 
             // ProductsForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(555, 450);
-            this.Controls.Add(this.labelDarab);
+            this.ClientSize = new System.Drawing.Size(598, 467);
+            this.Controls.Add(this.buttonCancel);
+            this.Controls.Add(this.buttonSave);
+            this.Controls.Add(this.labelQuantity);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.textBoxQuantity);
-            this.Controls.Add(this.button2);
-            this.Controls.Add(this.button1);
+            this.Controls.Add(this.buttonAdd);
+            this.Controls.Add(this.buttonRemove);
             this.Controls.Add(this.textBoxFilter);
             this.Controls.Add(this.listBoxProducts);
             this.Controls.Add(this.listBoxOrdered);
             this.Name = "ProductsForm";
             this.Text = "ProductsForm";
+            this.Load += new System.EventHandler(this.ProductsForm_Load);
             ((System.ComponentModel.ISupportInitialize)(this.orderDTOBindingSource)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
@@ -138,10 +168,12 @@
         private System.Windows.Forms.ListBox listBoxOrdered;
         private System.Windows.Forms.ListBox listBoxProducts;
         private System.Windows.Forms.TextBox textBoxFilter;
-        private System.Windows.Forms.Button button1;
-        private System.Windows.Forms.Button button2;
+        private System.Windows.Forms.Button buttonRemove;
+        private System.Windows.Forms.Button buttonAdd;
         private System.Windows.Forms.TextBox textBoxQuantity;
         private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.Label labelDarab;
+        private System.Windows.Forms.Label labelQuantity;
+        private System.Windows.Forms.Button buttonSave;
+        private System.Windows.Forms.Button buttonCancel;
     }
 }
