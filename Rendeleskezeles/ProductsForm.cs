@@ -1,4 +1,5 @@
-﻿using Hotcakes.CommerceDTO.v1.Catalog;
+﻿using Hotcakes.CommerceDTO.v1;
+using Hotcakes.CommerceDTO.v1.Catalog;
 using Hotcakes.CommerceDTO.v1.Client;
 using Hotcakes.CommerceDTO.v1.Orders;
 using System;
@@ -53,6 +54,9 @@ namespace Rendeleskezeles
             {
                 listBoxOrdered.DataSource = items;
             }
+
+            productBindingSource.DataSource = response.Content.ToList();
+            listBoxProducts.DataSource = productBindingSource;
         }
 
         private void textBoxFilter_TextChanged(object sender, EventArgs e)
@@ -102,7 +106,27 @@ namespace Rendeleskezeles
             var response = proxy.OrdersFind(orderId);
             var order = response.Content;
 
+            int quan = (int)numericQuantity.Value;
+
+            ApiResponse<ProductDTO> product = proxy.ProductsFind(productId);
+
+            if (product.Content == null)
+            {
+                MessageBox.Show($"Nem található termék azonosítóval: {productId}");
+            }
+
             var items = new List<LineItemDTO>();
+
+            items.Add(new LineItemDTO
+            {
+                ProductId = productId,
+                Quantity = quan,
+                ProductShortDescription = product.Content.ShortDescription,
+                ProductName = product.Content.ProductName,
+                ProductSku = product.Content.Sku,
+                BasePricePerItem = product.Content.ListPrice,
+                LineTotal = product.Content.ListPrice * quan,
+            });
 
             order.Items = items;
 

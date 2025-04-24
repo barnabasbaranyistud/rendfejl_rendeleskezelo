@@ -35,14 +35,15 @@
             this.textBoxFilter = new System.Windows.Forms.TextBox();
             this.buttonRemove = new System.Windows.Forms.Button();
             this.buttonAdd = new System.Windows.Forms.Button();
-            this.textBoxQuantity = new System.Windows.Forms.TextBox();
             this.label1 = new System.Windows.Forms.Label();
             this.labelQuantity = new System.Windows.Forms.Label();
             this.buttonSave = new System.Windows.Forms.Button();
             this.buttonCancel = new System.Windows.Forms.Button();
             this.productBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.numericQuantity = new System.Windows.Forms.NumericUpDown();
             ((System.ComponentModel.ISupportInitialize)(this.orderDTOBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.productBindingSource)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.numericQuantity)).BeginInit();
             this.SuspendLayout();
             // 
             // orderDTOBindingSource
@@ -94,15 +95,6 @@
             this.buttonAdd.UseVisualStyleBackColor = true;
             this.buttonAdd.Click += new System.EventHandler(this.buttonAdd_Click);
             // 
-            // textBoxQuantity
-            // 
-            this.textBoxQuantity.Location = new System.Drawing.Point(260, 159);
-            this.textBoxQuantity.Name = "textBoxQuantity";
-            this.textBoxQuantity.Size = new System.Drawing.Size(75, 20);
-            this.textBoxQuantity.TabIndex = 5;
-            this.textBoxQuantity.Text = "0";
-            this.textBoxQuantity.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
-            // 
             // label1
             // 
             this.label1.AutoSize = true;
@@ -140,16 +132,23 @@
             this.buttonCancel.Text = "Mégse";
             this.buttonCancel.UseVisualStyleBackColor = true;
             // 
+            // numericQuantity
+            // 
+            this.numericQuantity.Location = new System.Drawing.Point(260, 159);
+            this.numericQuantity.Name = "numericQuantity";
+            this.numericQuantity.Size = new System.Drawing.Size(75, 20);
+            this.numericQuantity.TabIndex = 10;
+            // 
             // ProductsForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(598, 467);
+            this.Controls.Add(this.numericQuantity);
             this.Controls.Add(this.buttonCancel);
             this.Controls.Add(this.buttonSave);
             this.Controls.Add(this.labelQuantity);
             this.Controls.Add(this.label1);
-            this.Controls.Add(this.textBoxQuantity);
             this.Controls.Add(this.buttonAdd);
             this.Controls.Add(this.buttonRemove);
             this.Controls.Add(this.textBoxFilter);
@@ -160,6 +159,7 @@
             this.Load += new System.EventHandler(this.ProductsForm_Load);
             ((System.ComponentModel.ISupportInitialize)(this.orderDTOBindingSource)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.productBindingSource)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.numericQuantity)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -173,11 +173,11 @@
         private System.Windows.Forms.TextBox textBoxFilter;
         private System.Windows.Forms.Button buttonRemove;
         private System.Windows.Forms.Button buttonAdd;
-        private System.Windows.Forms.TextBox textBoxQuantity;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Label labelQuantity;
         private System.Windows.Forms.Button buttonSave;
         private System.Windows.Forms.Button buttonCancel;
         private System.Windows.Forms.BindingSource productBindingSource;
+        private System.Windows.Forms.NumericUpDown numericQuantity;
     }
 }
