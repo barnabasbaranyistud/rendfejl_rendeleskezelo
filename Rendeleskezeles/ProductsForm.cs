@@ -1,4 +1,6 @@
-﻿using Hotcakes.CommerceDTO.v1.Client;
+﻿using Hotcakes.CommerceDTO.v1.Catalog;
+using Hotcakes.CommerceDTO.v1.Client;
+using Hotcakes.CommerceDTO.v1.Orders;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -15,6 +17,8 @@ namespace Rendeleskezeles
     {
         List<string> items = new List<string>();
         List<int> quantity = new List<int>();
+        string orderId = string.Empty;
+        string productId = string.Empty;
         public ProductsForm(BindingSource bindingSource)
         {
             InitializeComponent();
@@ -39,15 +43,7 @@ namespace Rendeleskezeles
 
             var response = proxy.ProductsFindAll();
 
-            var productnames = response.Content
-            .Select(product => product.ProductName)
-            .ToList();
-            if (productnames != null)
-            {
-                listBoxProducts.DataSource = productnames;
-            }
-
-            string orderId = ((OrderDTO)orderDTOBindingSource.Current).bvin;
+            orderId = ((OrderDTO)orderDTOBindingSource.Current).bvin;
 
             var order = proxy.OrdersFind(orderId);
 
@@ -98,6 +94,30 @@ namespace Rendeleskezeles
             {
                 labelQuantity.Text = "";
             }
+        }
+
+        private void UpdateOrderThroughApi()
+        {
+            Api proxy = ApiHivas();
+            var response = proxy.OrdersFind(orderId);
+            var order = response.Content;
+
+            var items = new List<LineItemDTO>();
+
+            order.Items = items;
+
+
+            var updateResponse = proxy.OrdersUpdate(order);
+            if (updateResponse.Errors == null || updateResponse.Errors.Count == 0)
+            {
+                MessageBox.Show("A rendelés sikeresen frissítve lett!");
+            }
+            else
+            {
+                string errorMessages = string.Join("\n", updateResponse.Errors);
+                MessageBox.Show("Hiba történt a frissítés során: " + errorMessages);
+            }
+
         }
     }
 }
