@@ -66,7 +66,7 @@ namespace Rendeleskezeles
 
         private void buttonRemove_Click(object sender, EventArgs e)
         {
-
+            UpdateOrder_Remove();
         }
 
         private void buttonAdd_Click(object sender, EventArgs e)
@@ -112,7 +112,9 @@ namespace Rendeleskezeles
                 return;
             }
 
-            order.Items.Add(new LineItemDTO
+            var items = order.Items;
+
+            items.Add(new LineItemDTO
             {
                 ProductId = productId,
                 Quantity = quan,
@@ -122,6 +124,8 @@ namespace Rendeleskezeles
                 BasePricePerItem = product.Content.ListPrice,
                 LineTotal = product.Content.ListPrice * quan,
             });
+
+            order.Items = items;
 
 
             var updateResponse = proxy.OrdersUpdate(order);
@@ -151,6 +155,56 @@ namespace Rendeleskezeles
             {
                 listBoxOrdered.DataSource = items;
             }
+        }
+
+        private void UpdateOrder_Remove()
+        {
+            Api proxy = ApiHivas();
+            var response = proxy.OrdersFind(orderId);
+            var order = response.Content;
+
+            string selectedProductName = listBoxOrdered.SelectedItem?.ToString();
+            if (string.IsNullOrEmpty(selectedProductName))
+            {
+                MessageBox.Show("Nincs kiválasztva termék a rendelésből.");
+                return;
+            }
+
+            // Betöltjük az összes terméket és megkeressük a nevet
+            var allProducts = proxy.ProductsFindAll();
+            var matchingProduct = allProducts.Content.FirstOrDefault(p => p.ProductName == selectedProductName);
+
+            if (matchingProduct == null)
+            {
+                MessageBox.Show($"Nem található termék ilyen névvel: {selectedProductName}");
+                return;
+            }
+
+            string productId = matchingProduct.Bvin;
+
+            // Eltávolítjuk a megfelelő tételt a rendelésből
+            var existingItem = order.Items.FirstOrDefault(item => item.ProductId == productId);
+
+            if (existingItem == null)
+            {
+                MessageBox.Show("A kiválasztott termék nem található ebben a rendelésben.");
+                return;
+            }
+
+            order.Items.Remove(existingItem);
+
+            var updateResponse = proxy.OrdersUpdate(order);
+            if (updateResponse.Errors == null || updateResponse.Errors.Count == 0)
+            {
+                MessageBox.Show("Termék sikeresen eltávolítva a rendelésből!");
+            }
+            else
+            {
+                string errorMessages = string.Join("\n", updateResponse.Errors);
+                MessageBox.Show("Hiba történt az eltávolítás során: " + errorMessages);
+            }
+
+            LoadOrders(proxy);
         }
     }
 }
