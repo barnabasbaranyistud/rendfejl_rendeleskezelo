@@ -19,7 +19,6 @@ namespace Rendeleskezeles
         List<string> items = new List<string>();
         List<int> quantity = new List<int>();
         string orderId = string.Empty;
-        string productId = string.Empty;
         public ProductsForm(BindingSource bindingSource)
         {
             InitializeComponent();
@@ -70,6 +69,8 @@ namespace Rendeleskezeles
             .Where(p => p.ProductName.ToLower().Contains(filterText))
             .ToList();
 
+            listBoxProducts.DataSource = null;
+            listBoxProducts.DataSource = filtered;
             listBoxProducts.DisplayMember = "ProductName";
         }
 
@@ -105,6 +106,9 @@ namespace Rendeleskezeles
 
             int quan = (int)numericQuantity.Value;
 
+            var selectedProduct = (ProductDTO)productBindingSource.Current;
+            string productId = selectedProduct.Bvin;
+
             ApiResponse<ProductDTO> product = proxy.ProductsFind(productId);
 
             if (product.Content == null)
@@ -139,11 +143,6 @@ namespace Rendeleskezeles
                 MessageBox.Show("Hiba történt a frissítés során: " + errorMessages);
             }
 
-        }
-
-        private void listBoxProducts_SelectedIndexChanged(object sender, EventArgs e)
-        {
-            productId = ((ProductDTO)listBoxProducts.SelectedItem).Bvin;
         }
     }
 }
