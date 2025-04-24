@@ -29,7 +29,6 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            this.orderDTOBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.listBoxOrdered = new System.Windows.Forms.ListBox();
             this.listBoxProducts = new System.Windows.Forms.ListBox();
             this.textBoxFilter = new System.Windows.Forms.TextBox();
@@ -41,14 +40,11 @@
             this.buttonCancel = new System.Windows.Forms.Button();
             this.productBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.numericQuantity = new System.Windows.Forms.NumericUpDown();
-            ((System.ComponentModel.ISupportInitialize)(this.orderDTOBindingSource)).BeginInit();
+            this.orderDTOBindingSource = new System.Windows.Forms.BindingSource(this.components);
             ((System.ComponentModel.ISupportInitialize)(this.productBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.numericQuantity)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.orderDTOBindingSource)).BeginInit();
             this.SuspendLayout();
-            // 
-            // orderDTOBindingSource
-            // 
-            this.orderDTOBindingSource.DataSource = typeof(OrderDTO);
             // 
             // listBoxOrdered
             // 
@@ -66,6 +62,7 @@
             this.listBoxProducts.Name = "listBoxProducts";
             this.listBoxProducts.Size = new System.Drawing.Size(170, 368);
             this.listBoxProducts.TabIndex = 1;
+            this.listBoxProducts.SelectedIndexChanged += new System.EventHandler(this.listBoxProducts_SelectedIndexChanged);
             // 
             // textBoxFilter
             // 
@@ -139,6 +136,10 @@
             this.numericQuantity.Size = new System.Drawing.Size(75, 20);
             this.numericQuantity.TabIndex = 10;
             // 
+            // orderDTOBindingSource
+            // 
+            this.orderDTOBindingSource.DataSource = typeof(OrderDTO);
+            // 
             // ProductsForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -157,9 +158,9 @@
             this.Name = "ProductsForm";
             this.Text = "ProductsForm";
             this.Load += new System.EventHandler(this.ProductsForm_Load);
-            ((System.ComponentModel.ISupportInitialize)(this.orderDTOBindingSource)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.productBindingSource)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.numericQuantity)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.orderDTOBindingSource)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 

@@ -57,23 +57,20 @@ namespace Rendeleskezeles
 
             productBindingSource.DataSource = response.Content.ToList();
             listBoxProducts.DataSource = productBindingSource;
+            listBoxProducts.DisplayMember = "ProductName";
         }
 
         private void textBoxFilter_TextChanged(object sender, EventArgs e)
         {
-            string filter = textBoxFilter.Text.ToLower();
+            string filterText = textBoxFilter.Text.ToLower();
 
-            Api proxy = ApiHivas();
+            var allProducts = (List<ProductDTO>)productBindingSource.DataSource;
 
-            var response = proxy.ProductsFindAll();
+            var filtered = allProducts
+            .Where(p => p.ProductName.ToLower().Contains(filterText))
+            .ToList();
 
-            var filtered = response.Content
-                .Select(product => product.ProductName)
-                .Where(o => o.ToLower().Contains(filter))
-                .ToArray();
-
-            listBoxProducts.Items.Clear();
-            listBoxProducts.Items.AddRange(filtered);
+            listBoxProducts.DisplayMember = "ProductName";
         }
 
         private void buttonRemove_Click(object sender, EventArgs e)
@@ -142,6 +139,11 @@ namespace Rendeleskezeles
                 MessageBox.Show("Hiba történt a frissítés során: " + errorMessages);
             }
 
+        }
+
+        private void listBoxProducts_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            productId = ((ProductDTO)listBoxProducts.SelectedItem).Bvin;
         }
     }
 }
