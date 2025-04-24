@@ -108,9 +108,9 @@ namespace Rendeleskezelo
             modForm.PopulateStatusComboBox(itemsFromComboBox);
             if (modForm.ShowDialog() == DialogResult.OK)
             {
-                BetoltesRendelesek();
                 ShowStatusMessage("Rendelés módosítva.");
-            }           
+            }
+            BetoltesRendelesek();
         }
 
         private void textBoxCustomerName_TextChanged(object sender, EventArgs e)

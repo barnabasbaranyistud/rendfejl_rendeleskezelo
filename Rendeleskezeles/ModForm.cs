@@ -144,7 +144,6 @@ namespace Rendeleskezelo
             var updateResponse = proxy.OrdersUpdate(order);
             if (updateResponse.Errors == null || updateResponse.Errors.Count == 0)
             {
-                MessageBox.Show("A rendelés sikeresen frissítve lett!");
             }
             else
             {
@@ -158,7 +157,7 @@ namespace Rendeleskezelo
         {
             ProductsForm prodForm = new ProductsForm(this.orderDTOBindingSource);
             prodForm.ShowDialog();
-            this.orderDTOBindingSource.DataSource = prodForm.orderDTOBindingSource;
+            this.Close();
 
         }
     }

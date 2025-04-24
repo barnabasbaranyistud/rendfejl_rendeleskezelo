@@ -1,4 +1,5 @@
-﻿using DocumentFormat.OpenXml.Vml.Office;
+﻿using DocumentFormat.OpenXml.Drawing.Charts;
+using DocumentFormat.OpenXml.Vml.Office;
 using Hotcakes.CommerceDTO.v1;
 using Hotcakes.CommerceDTO.v1.Catalog;
 using Hotcakes.CommerceDTO.v1.Client;
@@ -25,7 +26,7 @@ namespace Rendeleskezeles
             InitializeComponent();
             this.StartPosition = FormStartPosition.CenterScreen;
             this.orderDTOBindingSource.DataSource = bindingSource.Current;
-
+            orderId = ((OrderDTO)bindingSource.Current).bvin;
         }
 
         private static Api ApiHivas()
@@ -92,51 +93,50 @@ namespace Rendeleskezeles
         {
             Api proxy = ApiHivas();
             var response = proxy.OrdersFind(orderId);
-            var order = response.Content;
-
-            int quan = (int)numericQuantity.Value;
-            if (quan <= 0)
-            {
-                MessageBox.Show("Kérlek adj meg egy érvényes mennyiséget!");
-                return;
-            }
+            var originalOrder = response.Content;
 
             var selectedProduct = (ProductDTO)productBindingSource.Current;
             string productId = selectedProduct.Bvin;
+            int quantity = (int)numericQuantity.Value;
 
             ApiResponse<ProductDTO> product = proxy.ProductsFind(productId);
 
             if (product.Content == null)
             {
-                MessageBox.Show($"Nem található termék azonosítóval: {productId}");
+                MessageBox.Show("Nem található termék azonosítóval: " + productId);
                 return;
             }
 
-            var items = order.Items;
-
-            items.Add(new LineItemDTO
+            originalOrder.Items.Add(new LineItemDTO
             {
                 ProductId = productId,
-                Quantity = quan,
+                Quantity = quantity,
                 ProductShortDescription = product.Content.ShortDescription,
                 ProductName = product.Content.ProductName,
                 ProductSku = product.Content.Sku,
                 BasePricePerItem = product.Content.ListPrice,
-                LineTotal = product.Content.ListPrice * quan,
+                LineTotal = product.Content.ListPrice * quantity
             });
 
-            order.Items = items;
+            var deleteResponse = proxy.OrdersDelete(orderId);
 
-
-            var updateResponse = proxy.OrdersUpdate(order);
-            if (updateResponse.Errors == null || updateResponse.Errors.Count == 0)
+            if (deleteResponse.Errors != null && deleteResponse.Errors.Count > 0)
             {
-                MessageBox.Show("A rendelés sikeresen frissítve lett!");
+                MessageBox.Show("Nem sikerült törölni a rendelést: " + string.Join(", ", deleteResponse.Errors));
+                return;
+            }
+
+            originalOrder.Bvin = null; // nullázzuk, hogy új rendelésként jöjjön létre
+            ApiResponse<Hotcakes.CommerceDTO.v1.Orders.OrderDTO> createResponse = proxy.OrdersCreate(originalOrder);
+
+            if (createResponse.Errors.Any())
+            {
+                MessageBox.Show("Hiba a rendelés újralétrehozásakor: " + string.Join(", ", createResponse.Errors));
             }
             else
             {
-                string errorMessages = string.Join("\n", updateResponse.Errors);
-                MessageBox.Show("Hiba történt a frissítés során: " + errorMessages);
+                orderId = createResponse.Content.Bvin;
+                MessageBox.Show("Rendelés sikeresen frissítve új létrehozással: " + createResponse.Content.Bvin);
             }
 
             LoadOrders(proxy);
@@ -145,8 +145,6 @@ namespace Rendeleskezeles
 
         private void LoadOrders(Api proxy)
         {
-            orderId = ((OrderDTO)orderDTOBindingSource.Current).bvin;
-
             var order = proxy.OrdersFind(orderId);
 
             items = order.Content.Items.Select(item => item.ProductName).ToList();
