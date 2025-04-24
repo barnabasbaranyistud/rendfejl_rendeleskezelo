@@ -94,12 +94,32 @@ namespace Rendeleskezeles
             Api proxy = ApiHivas();
             var response = proxy.OrdersFind(orderId);
             var originalOrder = response.Content;
-
-            var selectedProduct = (ProductDTO)productBindingSource.Current;
-            string productId = selectedProduct.Bvin;
+            if (numericQuantity.Value <= 0)
+            {
+                MessageBox.Show("Kérjük, adjon meg egy érvényes mennyiséget a termékhez.");
+                return;
+            }
             int quantity = (int)numericQuantity.Value;
+            string selectedProductName = listBoxProducts.Text?.ToString();
+            if (string.IsNullOrEmpty(selectedProductName))
+            {
+                MessageBox.Show("Nincs kiválasztva termék a rendelésből.");
+                return;
+            }
 
-            ApiResponse<ProductDTO> product = proxy.ProductsFind(productId);
+            // Betöltjük az összes terméket és megkeressük a nevet
+            var allProducts = proxy.ProductsFindAll();
+            var matchingProduct = allProducts.Content.FirstOrDefault(p => p.ProductName == selectedProductName);
+
+            if (matchingProduct == null)
+            {
+                MessageBox.Show($"Nem található termék ilyen névvel: {selectedProductName}");
+                return;
+            }
+
+            string productId = matchingProduct.Bvin;
+
+            var product = proxy.ProductsFind(productId);
 
             if (product.Content == null)
             {
@@ -158,17 +178,20 @@ namespace Rendeleskezeles
         private void UpdateOrder_Remove()
         {
             Api proxy = ApiHivas();
+
+            // 1. Rendelés lekérése
             var response = proxy.OrdersFind(orderId);
             var order = response.Content;
 
-            string selectedProductName = listBoxOrdered.SelectedItem?.ToString();
+            // 2. Kiválasztott termék nevének lekérése a listboxból
+            string selectedProductName = listBoxOrdered.Text?.ToString();
             if (string.IsNullOrEmpty(selectedProductName))
             {
                 MessageBox.Show("Nincs kiválasztva termék a rendelésből.");
                 return;
             }
 
-            // Betöltjük az összes terméket és megkeressük a nevet
+            // 3. Termék megkeresése név alapján
             var allProducts = proxy.ProductsFindAll();
             var matchingProduct = allProducts.Content.FirstOrDefault(p => p.ProductName == selectedProductName);
 
@@ -180,9 +203,8 @@ namespace Rendeleskezeles
 
             string productId = matchingProduct.Bvin;
 
-            // Eltávolítjuk a megfelelő tételt a rendelésből
+            // 4. Meglévő tétel megkeresése és eltávolítása
             var existingItem = order.Items.FirstOrDefault(item => item.ProductId == productId);
-
             if (existingItem == null)
             {
                 MessageBox.Show("A kiválasztott termék nem található ebben a rendelésben.");
@@ -191,17 +213,30 @@ namespace Rendeleskezeles
 
             order.Items.Remove(existingItem);
 
-            var updateResponse = proxy.OrdersUpdate(order);
-            if (updateResponse.Errors == null || updateResponse.Errors.Count == 0)
+            // 5. Eredeti rendelés törlése
+            var deleteResponse = proxy.OrdersDelete(order.Bvin);
+            if (deleteResponse.Errors != null && deleteResponse.Errors.Count > 0)
             {
-                MessageBox.Show("Termék sikeresen eltávolítva a rendelésből!");
+                MessageBox.Show("Hiba történt a rendelés törlése során: " + string.Join("\n", deleteResponse.Errors));
+                return;
+            }
+
+            // 6. Bvin nullázása, hogy újként jöjjön létre
+            order.Bvin = null;
+
+            // 7. Új rendelés létrehozása módosított tételekkel
+            var createResponse = proxy.OrdersCreate(order);
+            if (createResponse.Errors != null && createResponse.Errors.Count > 0)
+            {
+                MessageBox.Show("Hiba a rendelés újralétrehozásakor: " + string.Join("\n", createResponse.Errors));
             }
             else
             {
-                string errorMessages = string.Join("\n", updateResponse.Errors);
-                MessageBox.Show("Hiba történt az eltávolítás során: " + errorMessages);
+                orderId = createResponse.Content.Bvin;
+                MessageBox.Show("A termék sikeresen eltávolítva, a rendelés újra létrehozva!");
             }
 
+            // 8. Rendelések újratöltése
             LoadOrders(proxy);
         }
     }
