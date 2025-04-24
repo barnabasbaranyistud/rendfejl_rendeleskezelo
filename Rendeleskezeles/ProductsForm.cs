@@ -1,4 +1,5 @@
-﻿using Hotcakes.CommerceDTO.v1;
+﻿using DocumentFormat.OpenXml.Vml.Office;
+using Hotcakes.CommerceDTO.v1;
 using Hotcakes.CommerceDTO.v1.Catalog;
 using Hotcakes.CommerceDTO.v1.Client;
 using Hotcakes.CommerceDTO.v1.Orders;
@@ -24,10 +25,8 @@ namespace Rendeleskezeles
             InitializeComponent();
             this.StartPosition = FormStartPosition.CenterScreen;
             this.orderDTOBindingSource.DataSource = bindingSource.Current;
-            
+
         }
-
-
 
         private static Api ApiHivas()
         {
@@ -43,16 +42,7 @@ namespace Rendeleskezeles
 
             var response = proxy.ProductsFindAll();
 
-            orderId = ((OrderDTO)orderDTOBindingSource.Current).bvin;
-
-            var order = proxy.OrdersFind(orderId);
-
-            items = order.Content.Items.Select(item => item.ProductName).ToList();
-            quantity = order.Content.Items.Select(item => item.Quantity).ToList();
-            if (items != null)
-            {
-                listBoxOrdered.DataSource = items;
-            }
+            LoadOrders(proxy);
 
             productBindingSource.DataSource = response.Content.ToList();
             listBoxProducts.DataSource = productBindingSource;
@@ -81,7 +71,7 @@ namespace Rendeleskezeles
 
         private void buttonAdd_Click(object sender, EventArgs e)
         {
-
+            UpdateOrder_Add();
         }
 
         private void listBoxOrdered_SelectedIndexChanged(object sender, EventArgs e)
@@ -98,13 +88,18 @@ namespace Rendeleskezeles
             }
         }
 
-        private void UpdateOrderThroughApi()
+        private void UpdateOrder_Add()
         {
             Api proxy = ApiHivas();
             var response = proxy.OrdersFind(orderId);
             var order = response.Content;
 
             int quan = (int)numericQuantity.Value;
+            if (quan <= 0)
+            {
+                MessageBox.Show("Kérlek adj meg egy érvényes mennyiséget!");
+                return;
+            }
 
             var selectedProduct = (ProductDTO)productBindingSource.Current;
             string productId = selectedProduct.Bvin;
@@ -114,11 +109,10 @@ namespace Rendeleskezeles
             if (product.Content == null)
             {
                 MessageBox.Show($"Nem található termék azonosítóval: {productId}");
+                return;
             }
 
-            var items = order.Items;
-
-            items.Add(new LineItemDTO
+            order.Items.Add(new LineItemDTO
             {
                 ProductId = productId,
                 Quantity = quan,
@@ -128,8 +122,6 @@ namespace Rendeleskezeles
                 BasePricePerItem = product.Content.ListPrice,
                 LineTotal = product.Content.ListPrice * quan,
             });
-
-            order.Items = items;
 
 
             var updateResponse = proxy.OrdersUpdate(order);
@@ -143,6 +135,22 @@ namespace Rendeleskezeles
                 MessageBox.Show("Hiba történt a frissítés során: " + errorMessages);
             }
 
+            LoadOrders(proxy);
+
+        }
+
+        private void LoadOrders(Api proxy)
+        {
+            orderId = ((OrderDTO)orderDTOBindingSource.Current).bvin;
+
+            var order = proxy.OrdersFind(orderId);
+
+            items = order.Content.Items.Select(item => item.ProductName).ToList();
+            quantity = order.Content.Items.Select(item => item.Quantity).ToList();
+            if (items != null)
+            {
+                listBoxOrdered.DataSource = items;
+            }
         }
     }
 }

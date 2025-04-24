@@ -37,7 +37,6 @@
             this.label1 = new System.Windows.Forms.Label();
             this.labelQuantity = new System.Windows.Forms.Label();
             this.buttonSave = new System.Windows.Forms.Button();
-            this.buttonCancel = new System.Windows.Forms.Button();
             this.productBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.numericQuantity = new System.Windows.Forms.NumericUpDown();
             this.orderDTOBindingSource = new System.Windows.Forms.BindingSource(this.components);
@@ -60,14 +59,14 @@
             this.listBoxProducts.FormattingEnabled = true;
             this.listBoxProducts.Location = new System.Drawing.Point(400, 60);
             this.listBoxProducts.Name = "listBoxProducts";
-            this.listBoxProducts.Size = new System.Drawing.Size(170, 368);
+            this.listBoxProducts.Size = new System.Drawing.Size(336, 368);
             this.listBoxProducts.TabIndex = 1;
             // 
             // textBoxFilter
             // 
             this.textBoxFilter.Location = new System.Drawing.Point(400, 25);
             this.textBoxFilter.Name = "textBoxFilter";
-            this.textBoxFilter.Size = new System.Drawing.Size(170, 20);
+            this.textBoxFilter.Size = new System.Drawing.Size(336, 20);
             this.textBoxFilter.TabIndex = 2;
             this.textBoxFilter.TextChanged += new System.EventHandler(this.textBoxFilter_TextChanged);
             // 
@@ -111,22 +110,12 @@
             // buttonSave
             // 
             this.buttonSave.DialogResult = System.Windows.Forms.DialogResult.OK;
-            this.buttonSave.Location = new System.Drawing.Point(310, 405);
+            this.buttonSave.Location = new System.Drawing.Point(260, 405);
             this.buttonSave.Name = "buttonSave";
             this.buttonSave.Size = new System.Drawing.Size(75, 23);
             this.buttonSave.TabIndex = 8;
-            this.buttonSave.Text = "Mentés";
+            this.buttonSave.Text = "Kész";
             this.buttonSave.UseVisualStyleBackColor = true;
-            // 
-            // buttonCancel
-            // 
-            this.buttonCancel.DialogResult = System.Windows.Forms.DialogResult.Cancel;
-            this.buttonCancel.Location = new System.Drawing.Point(215, 405);
-            this.buttonCancel.Name = "buttonCancel";
-            this.buttonCancel.Size = new System.Drawing.Size(75, 23);
-            this.buttonCancel.TabIndex = 9;
-            this.buttonCancel.Text = "Mégse";
-            this.buttonCancel.UseVisualStyleBackColor = true;
             // 
             // numericQuantity
             // 
@@ -143,9 +132,8 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(598, 467);
+            this.ClientSize = new System.Drawing.Size(772, 467);
             this.Controls.Add(this.numericQuantity);
-            this.Controls.Add(this.buttonCancel);
             this.Controls.Add(this.buttonSave);
             this.Controls.Add(this.labelQuantity);
             this.Controls.Add(this.label1);
@@ -166,8 +154,6 @@
         }
 
         #endregion
-
-        private System.Windows.Forms.BindingSource orderDTOBindingSource;
         private System.Windows.Forms.ListBox listBoxOrdered;
         private System.Windows.Forms.ListBox listBoxProducts;
         private System.Windows.Forms.TextBox textBoxFilter;
@@ -176,8 +162,8 @@
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Label labelQuantity;
         private System.Windows.Forms.Button buttonSave;
-        private System.Windows.Forms.Button buttonCancel;
-        private System.Windows.Forms.BindingSource productBindingSource;
         private System.Windows.Forms.NumericUpDown numericQuantity;
+        public System.Windows.Forms.BindingSource orderDTOBindingSource;
+        private System.Windows.Forms.BindingSource productBindingSource;
     }
 }
