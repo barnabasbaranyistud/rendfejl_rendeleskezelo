@@ -62,7 +62,6 @@
             this.listBoxProducts.Name = "listBoxProducts";
             this.listBoxProducts.Size = new System.Drawing.Size(170, 368);
             this.listBoxProducts.TabIndex = 1;
-            this.listBoxProducts.SelectedIndexChanged += new System.EventHandler(this.listBoxProducts_SelectedIndexChanged);
             // 
             // textBoxFilter
             // 
