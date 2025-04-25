@@ -39,6 +39,19 @@ namespace Rendeleskezeles
 
         private void ProductsForm_Load(object sender, EventArgs e)
         {
+            foreach (System.Windows.Forms.Control ctrl in this.Controls)
+            {
+                if (ctrl is Button btn)
+                {
+                    btn.FlatStyle = FlatStyle.Flat;
+                    btn.BackColor = System.Drawing.Color.DeepSkyBlue;
+                    btn.FlatAppearance.BorderColor = System.Drawing.Color.DeepSkyBlue;
+                    btn.FlatAppearance.BorderSize = 0;
+                    btn.FlatAppearance.MouseOverBackColor = System.Drawing.Color.DeepSkyBlue;
+                    btn.FlatAppearance.MouseDownBackColor = System.Drawing.Color.DeepSkyBlue;
+                }
+            }
+
             Api proxy = ApiHivas();
 
             var response = proxy.ProductsFindAll();

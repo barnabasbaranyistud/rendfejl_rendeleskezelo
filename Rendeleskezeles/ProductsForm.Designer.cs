@@ -47,24 +47,31 @@
             // 
             // listBoxOrdered
             // 
+            this.listBoxOrdered.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left)));
+            this.listBoxOrdered.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
             this.listBoxOrdered.FormattingEnabled = true;
             this.listBoxOrdered.Location = new System.Drawing.Point(28, 60);
             this.listBoxOrdered.Name = "listBoxOrdered";
-            this.listBoxOrdered.Size = new System.Drawing.Size(170, 368);
+            this.listBoxOrdered.Size = new System.Drawing.Size(182, 368);
             this.listBoxOrdered.TabIndex = 0;
             this.listBoxOrdered.SelectedIndexChanged += new System.EventHandler(this.listBoxOrdered_SelectedIndexChanged);
             // 
             // listBoxProducts
             // 
+            this.listBoxProducts.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.listBoxProducts.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
             this.listBoxProducts.FormattingEnabled = true;
-            this.listBoxProducts.Location = new System.Drawing.Point(400, 60);
+            this.listBoxProducts.Location = new System.Drawing.Point(387, 60);
             this.listBoxProducts.Name = "listBoxProducts";
             this.listBoxProducts.Size = new System.Drawing.Size(336, 368);
             this.listBoxProducts.TabIndex = 1;
             // 
             // textBoxFilter
             // 
-            this.textBoxFilter.Location = new System.Drawing.Point(400, 25);
+            this.textBoxFilter.Location = new System.Drawing.Point(387, 25);
             this.textBoxFilter.Name = "textBoxFilter";
             this.textBoxFilter.Size = new System.Drawing.Size(336, 20);
             this.textBoxFilter.TabIndex = 2;
@@ -109,6 +116,8 @@
             // 
             // buttonSave
             // 
+            this.buttonSave.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left)));
             this.buttonSave.DialogResult = System.Windows.Forms.DialogResult.OK;
             this.buttonSave.Location = new System.Drawing.Point(260, 405);
             this.buttonSave.Name = "buttonSave";
@@ -132,7 +141,8 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(772, 467);
+            this.BackColor = System.Drawing.Color.White;
+            this.ClientSize = new System.Drawing.Size(751, 467);
             this.Controls.Add(this.numericQuantity);
             this.Controls.Add(this.buttonSave);
             this.Controls.Add(this.labelQuantity);

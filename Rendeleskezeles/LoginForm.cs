@@ -19,8 +19,6 @@ namespace Rendeleskezelo
         public LoginForm()
         {
             InitializeComponent();
-
-
             this.StartPosition = FormStartPosition.CenterScreen;
         }
 
@@ -36,7 +34,7 @@ namespace Rendeleskezelo
             else
             {
                 lblError.Text = "Hibás név vagy jelszó.";
-                MessageBox.Show("Login failed.");
+                lblError.Visible = true;
             }
         }
 
@@ -69,5 +67,9 @@ namespace Rendeleskezelo
             }
         }
 
-    }
+        private void LoginForm_Load(object sender, EventArgs e)
+        {
+
+        }
+}
 }

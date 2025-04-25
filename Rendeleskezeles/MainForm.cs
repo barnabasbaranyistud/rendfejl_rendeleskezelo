@@ -1,7 +1,5 @@
 ﻿using ClosedXML.Excel;
 using DocumentFormat.OpenXml.Spreadsheet;
-using DocumentFormat.OpenXml.Vml;
-using DocumentFormat.OpenXml.Vml.Office;
 using Hotcakes.CommerceDTO.v1;
 using Hotcakes.CommerceDTO.v1.Catalog;
 using Hotcakes.CommerceDTO.v1.Client;
@@ -9,6 +7,7 @@ using Hotcakes.CommerceDTO.v1.Contacts;
 using Hotcakes.CommerceDTO.v1.Orders;
 using System;
 using System.Collections.Generic;
+using System.Drawing;
 using System.IO;
 using System.Linq;
 using System.Windows.Forms;
@@ -286,6 +285,22 @@ namespace Rendeleskezelo
         private void buttonSignOut_Click(object sender, EventArgs e)
         {
             Application.Restart();
+        }
+
+        private void MainForm_Load(object sender, EventArgs e)
+        {
+            foreach (System.Windows.Forms.Control ctrl in this.Controls)
+            {
+                if (ctrl is Button btn)
+                {
+                    btn.FlatStyle = FlatStyle.Flat;
+                    btn.BackColor = System.Drawing.Color.DeepSkyBlue;
+                    btn.FlatAppearance.BorderColor = System.Drawing.Color.DeepSkyBlue;
+                    btn.FlatAppearance.BorderSize = 0;
+                    btn.FlatAppearance.MouseOverBackColor = System.Drawing.Color.DeepSkyBlue;
+                    btn.FlatAppearance.MouseDownBackColor = System.Drawing.Color.DeepSkyBlue;
+                }
+            }
         }
     }
 }
