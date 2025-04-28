@@ -289,18 +289,6 @@ namespace Rendeleskezelo
 
         private void MainForm_Load(object sender, EventArgs e)
         {
-            foreach (System.Windows.Forms.Control ctrl in this.Controls)
-            {
-                if (ctrl is Button btn)
-                {
-                    btn.FlatStyle = FlatStyle.Flat;
-                    btn.BackColor = System.Drawing.Color.DeepSkyBlue;
-                    btn.FlatAppearance.BorderColor = System.Drawing.Color.DeepSkyBlue;
-                    btn.FlatAppearance.BorderSize = 0;
-                    btn.FlatAppearance.MouseOverBackColor = System.Drawing.Color.DeepSkyBlue;
-                    btn.FlatAppearance.MouseDownBackColor = System.Drawing.Color.DeepSkyBlue;
-                }
-            }
         }
     }
 }

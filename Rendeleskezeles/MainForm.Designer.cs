@@ -33,6 +33,15 @@ namespace Rendeleskezelo
         {
             this.components = new System.ComponentModel.Container();
             this.dataGridViewOrders = new System.Windows.Forms.DataGridView();
+            this.orderIdDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.customerNameDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.emailDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.orderDateDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.statusDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.shippingAddressDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.shippingCostDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.orderTotalDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.orderDTOBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.buttonAddOrder = new System.Windows.Forms.Button();
             this.buttonModOrder = new System.Windows.Forms.Button();
             this.buttonDelOrder = new System.Windows.Forms.Button();
@@ -46,19 +55,10 @@ namespace Rendeleskezelo
             this.toolStripStatusLabel1 = new System.Windows.Forms.ToolStripStatusLabel();
             this.buttonClear = new System.Windows.Forms.Button();
             this.panel1 = new System.Windows.Forms.Panel();
-            this.orderIdDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.customerNameDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.emailDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.orderDateDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.statusDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.shippingAddressDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.shippingCostDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.orderTotalDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.orderDTOBindingSource = new System.Windows.Forms.BindingSource(this.components);
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewOrders)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.orderDTOBindingSource)).BeginInit();
             this.statusStrip.SuspendLayout();
             this.panel1.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.orderDTOBindingSource)).BeginInit();
             this.SuspendLayout();
             // 
             // dataGridViewOrders
@@ -82,8 +82,76 @@ namespace Rendeleskezelo
             this.dataGridViewOrders.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.dataGridViewOrders.Name = "dataGridViewOrders";
             this.dataGridViewOrders.RowHeadersWidth = 60;
-            this.dataGridViewOrders.Size = new System.Drawing.Size(799, 302);
+            this.dataGridViewOrders.Size = new System.Drawing.Size(800, 302);
             this.dataGridViewOrders.TabIndex = 0;
+            // 
+            // orderIdDataGridViewTextBoxColumn
+            // 
+            this.orderIdDataGridViewTextBoxColumn.DataPropertyName = "OrderId";
+            this.orderIdDataGridViewTextBoxColumn.HeaderText = "OrderId";
+            this.orderIdDataGridViewTextBoxColumn.MinimumWidth = 10;
+            this.orderIdDataGridViewTextBoxColumn.Name = "orderIdDataGridViewTextBoxColumn";
+            this.orderIdDataGridViewTextBoxColumn.Width = 70;
+            // 
+            // customerNameDataGridViewTextBoxColumn
+            // 
+            this.customerNameDataGridViewTextBoxColumn.DataPropertyName = "CustomerName";
+            this.customerNameDataGridViewTextBoxColumn.HeaderText = "CustomerName";
+            this.customerNameDataGridViewTextBoxColumn.MinimumWidth = 10;
+            this.customerNameDataGridViewTextBoxColumn.Name = "customerNameDataGridViewTextBoxColumn";
+            this.customerNameDataGridViewTextBoxColumn.Width = 120;
+            // 
+            // emailDataGridViewTextBoxColumn
+            // 
+            this.emailDataGridViewTextBoxColumn.DataPropertyName = "Email";
+            this.emailDataGridViewTextBoxColumn.HeaderText = "Email";
+            this.emailDataGridViewTextBoxColumn.MinimumWidth = 10;
+            this.emailDataGridViewTextBoxColumn.Name = "emailDataGridViewTextBoxColumn";
+            this.emailDataGridViewTextBoxColumn.Width = 120;
+            // 
+            // orderDateDataGridViewTextBoxColumn
+            // 
+            this.orderDateDataGridViewTextBoxColumn.DataPropertyName = "OrderDate";
+            this.orderDateDataGridViewTextBoxColumn.HeaderText = "OrderDate";
+            this.orderDateDataGridViewTextBoxColumn.MinimumWidth = 10;
+            this.orderDateDataGridViewTextBoxColumn.Name = "orderDateDataGridViewTextBoxColumn";
+            this.orderDateDataGridViewTextBoxColumn.Width = 70;
+            // 
+            // statusDataGridViewTextBoxColumn
+            // 
+            this.statusDataGridViewTextBoxColumn.DataPropertyName = "Status";
+            this.statusDataGridViewTextBoxColumn.HeaderText = "Status";
+            this.statusDataGridViewTextBoxColumn.MinimumWidth = 10;
+            this.statusDataGridViewTextBoxColumn.Name = "statusDataGridViewTextBoxColumn";
+            this.statusDataGridViewTextBoxColumn.Width = 70;
+            // 
+            // shippingAddressDataGridViewTextBoxColumn
+            // 
+            this.shippingAddressDataGridViewTextBoxColumn.DataPropertyName = "ShippingAddress";
+            this.shippingAddressDataGridViewTextBoxColumn.HeaderText = "ShippingAddress";
+            this.shippingAddressDataGridViewTextBoxColumn.MinimumWidth = 10;
+            this.shippingAddressDataGridViewTextBoxColumn.Name = "shippingAddressDataGridViewTextBoxColumn";
+            this.shippingAddressDataGridViewTextBoxColumn.Width = 150;
+            // 
+            // shippingCostDataGridViewTextBoxColumn
+            // 
+            this.shippingCostDataGridViewTextBoxColumn.DataPropertyName = "ShippingCost";
+            this.shippingCostDataGridViewTextBoxColumn.HeaderText = "ShippingCost";
+            this.shippingCostDataGridViewTextBoxColumn.MinimumWidth = 10;
+            this.shippingCostDataGridViewTextBoxColumn.Name = "shippingCostDataGridViewTextBoxColumn";
+            this.shippingCostDataGridViewTextBoxColumn.Width = 70;
+            // 
+            // orderTotalDataGridViewTextBoxColumn
+            // 
+            this.orderTotalDataGridViewTextBoxColumn.DataPropertyName = "OrderTotal";
+            this.orderTotalDataGridViewTextBoxColumn.HeaderText = "OrderTotal";
+            this.orderTotalDataGridViewTextBoxColumn.MinimumWidth = 10;
+            this.orderTotalDataGridViewTextBoxColumn.Name = "orderTotalDataGridViewTextBoxColumn";
+            this.orderTotalDataGridViewTextBoxColumn.Width = 70;
+            // 
+            // orderDTOBindingSource
+            // 
+            this.orderDTOBindingSource.DataSource = typeof(OrderDTO);
             // 
             // buttonAddOrder
             // 
@@ -171,10 +239,10 @@ namespace Rendeleskezelo
             this.buttonSignOut.FlatAppearance.MouseOverBackColor = System.Drawing.Color.LightSkyBlue;
             this.buttonSignOut.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.buttonSignOut.Font = new System.Drawing.Font("Arial", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
-            this.buttonSignOut.Location = new System.Drawing.Point(717, 83);
+            this.buttonSignOut.Location = new System.Drawing.Point(698, 83);
             this.buttonSignOut.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.buttonSignOut.Name = "buttonSignOut";
-            this.buttonSignOut.Size = new System.Drawing.Size(109, 20);
+            this.buttonSignOut.Size = new System.Drawing.Size(129, 20);
             this.buttonSignOut.TabIndex = 5;
             this.buttonSignOut.Text = "Kijelentekezés";
             this.buttonSignOut.UseVisualStyleBackColor = false;
@@ -230,10 +298,10 @@ namespace Rendeleskezelo
             this.statusStrip.ImageScalingSize = new System.Drawing.Size(32, 32);
             this.statusStrip.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.toolStripStatusLabel1});
-            this.statusStrip.Location = new System.Drawing.Point(0, 440);
+            this.statusStrip.Location = new System.Drawing.Point(0, 398);
             this.statusStrip.Name = "statusStrip";
             this.statusStrip.Padding = new System.Windows.Forms.Padding(1, 0, 12, 0);
-            this.statusStrip.Size = new System.Drawing.Size(859, 22);
+            this.statusStrip.Size = new System.Drawing.Size(839, 22);
             this.statusStrip.TabIndex = 10;
             this.statusStrip.Text = "statusStrip1";
             // 
@@ -275,83 +343,15 @@ namespace Rendeleskezelo
             this.panel1.Location = new System.Drawing.Point(0, -5);
             this.panel1.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(859, 73);
+            this.panel1.Size = new System.Drawing.Size(935, 73);
             this.panel1.TabIndex = 12;
-            // 
-            // orderIdDataGridViewTextBoxColumn
-            // 
-            this.orderIdDataGridViewTextBoxColumn.DataPropertyName = "OrderId";
-            this.orderIdDataGridViewTextBoxColumn.HeaderText = "OrderId";
-            this.orderIdDataGridViewTextBoxColumn.MinimumWidth = 10;
-            this.orderIdDataGridViewTextBoxColumn.Name = "orderIdDataGridViewTextBoxColumn";
-            this.orderIdDataGridViewTextBoxColumn.Width = 70;
-            // 
-            // customerNameDataGridViewTextBoxColumn
-            // 
-            this.customerNameDataGridViewTextBoxColumn.DataPropertyName = "CustomerName";
-            this.customerNameDataGridViewTextBoxColumn.HeaderText = "CustomerName";
-            this.customerNameDataGridViewTextBoxColumn.MinimumWidth = 10;
-            this.customerNameDataGridViewTextBoxColumn.Name = "customerNameDataGridViewTextBoxColumn";
-            this.customerNameDataGridViewTextBoxColumn.Width = 120;
-            // 
-            // emailDataGridViewTextBoxColumn
-            // 
-            this.emailDataGridViewTextBoxColumn.DataPropertyName = "Email";
-            this.emailDataGridViewTextBoxColumn.HeaderText = "Email";
-            this.emailDataGridViewTextBoxColumn.MinimumWidth = 10;
-            this.emailDataGridViewTextBoxColumn.Name = "emailDataGridViewTextBoxColumn";
-            this.emailDataGridViewTextBoxColumn.Width = 120;
-            // 
-            // orderDateDataGridViewTextBoxColumn
-            // 
-            this.orderDateDataGridViewTextBoxColumn.DataPropertyName = "OrderDate";
-            this.orderDateDataGridViewTextBoxColumn.HeaderText = "OrderDate";
-            this.orderDateDataGridViewTextBoxColumn.MinimumWidth = 10;
-            this.orderDateDataGridViewTextBoxColumn.Name = "orderDateDataGridViewTextBoxColumn";
-            this.orderDateDataGridViewTextBoxColumn.Width = 70;
-            // 
-            // statusDataGridViewTextBoxColumn
-            // 
-            this.statusDataGridViewTextBoxColumn.DataPropertyName = "Status";
-            this.statusDataGridViewTextBoxColumn.HeaderText = "Status";
-            this.statusDataGridViewTextBoxColumn.MinimumWidth = 10;
-            this.statusDataGridViewTextBoxColumn.Name = "statusDataGridViewTextBoxColumn";
-            this.statusDataGridViewTextBoxColumn.Width = 70;
-            // 
-            // shippingAddressDataGridViewTextBoxColumn
-            // 
-            this.shippingAddressDataGridViewTextBoxColumn.DataPropertyName = "ShippingAddress";
-            this.shippingAddressDataGridViewTextBoxColumn.HeaderText = "ShippingAddress";
-            this.shippingAddressDataGridViewTextBoxColumn.MinimumWidth = 10;
-            this.shippingAddressDataGridViewTextBoxColumn.Name = "shippingAddressDataGridViewTextBoxColumn";
-            this.shippingAddressDataGridViewTextBoxColumn.Width = 150;
-            // 
-            // shippingCostDataGridViewTextBoxColumn
-            // 
-            this.shippingCostDataGridViewTextBoxColumn.DataPropertyName = "ShippingCost";
-            this.shippingCostDataGridViewTextBoxColumn.HeaderText = "ShippingCost";
-            this.shippingCostDataGridViewTextBoxColumn.MinimumWidth = 10;
-            this.shippingCostDataGridViewTextBoxColumn.Name = "shippingCostDataGridViewTextBoxColumn";
-            this.shippingCostDataGridViewTextBoxColumn.Width = 70;
-            // 
-            // orderTotalDataGridViewTextBoxColumn
-            // 
-            this.orderTotalDataGridViewTextBoxColumn.DataPropertyName = "OrderTotal";
-            this.orderTotalDataGridViewTextBoxColumn.HeaderText = "OrderTotal";
-            this.orderTotalDataGridViewTextBoxColumn.MinimumWidth = 10;
-            this.orderTotalDataGridViewTextBoxColumn.Name = "orderTotalDataGridViewTextBoxColumn";
-            this.orderTotalDataGridViewTextBoxColumn.Width = 70;
-            // 
-            // orderDTOBindingSource
-            // 
-            this.orderDTOBindingSource.DataSource = typeof(OrderDTO);
             // 
             // MainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.Window;
-            this.ClientSize = new System.Drawing.Size(859, 462);
+            this.ClientSize = new System.Drawing.Size(839, 420);
             this.Controls.Add(this.statusStrip);
             this.Controls.Add(this.buttonSignOut);
             this.Controls.Add(this.buttonReload);
@@ -365,11 +365,11 @@ namespace Rendeleskezelo
             this.Text = "Rendelések kezelése";
             this.Load += new System.EventHandler(this.MainForm_Load);
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewOrders)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.orderDTOBindingSource)).EndInit();
             this.statusStrip.ResumeLayout(false);
             this.statusStrip.PerformLayout();
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.orderDTOBindingSource)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
