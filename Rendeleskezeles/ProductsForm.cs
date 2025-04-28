@@ -147,8 +147,8 @@ namespace Rendeleskezeles
                 ProductShortDescription = product.Content.ShortDescription,
                 ProductName = product.Content.ProductName,
                 ProductSku = product.Content.Sku,
-                BasePricePerItem = product.Content.ListPrice,
-                LineTotal = product.Content.ListPrice * quantity
+                BasePricePerItem = product.Content.SitePrice,
+                LineTotal = product.Content.SitePrice * quantity
             });
 
             var deleteResponse = proxy.OrdersDelete(orderId);
