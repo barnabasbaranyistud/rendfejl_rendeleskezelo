@@ -306,5 +306,60 @@ namespace Rendeleskezelo
 
             orderDTOBindingSource.Sort = $"{columnName} {(direction == ListSortDirection.Ascending ? "ASC" : "DESC")}";
         }
+
+        private void buttonMinta_Click(object sender, EventArgs e)
+        {
+            GenerateExampleExcel();
+        }
+
+        public void GenerateExampleExcel()
+        {
+            // Open the SaveFileDialog
+            using (SaveFileDialog saveFileDialog = new SaveFileDialog())
+            {
+                // Set the file filter for Excel files
+                saveFileDialog.Filter = "Excel Files (*.xlsx)|*.xlsx";
+
+                // Set the default file name
+                saveFileDialog.FileName = "OrderExample.xlsx";
+
+                // Show the dialog and check if the user selected a file
+                if (saveFileDialog.ShowDialog() == DialogResult.OK)
+                {
+                    // Create a new workbook
+                    using (var workbook = new XLWorkbook())
+                    {
+                        // Add a worksheet to the workbook
+                        var worksheet = workbook.AddWorksheet("OrderExample");
+
+                        // Add the header row
+                        worksheet.Cell(1, 1).Value = "FirstName";
+                        worksheet.Cell(1, 2).Value = "LastName";
+                        worksheet.Cell(1, 3).Value = "Email";
+                        worksheet.Cell(1, 4).Value = "City";
+                        worksheet.Cell(1, 5).Value = "Line1";
+                        worksheet.Cell(1, 6).Value = "PostalCode";
+                        worksheet.Cell(1, 7).Value = "ProductId";
+                        worksheet.Cell(1, 8).Value = "Quantity";
+
+                        // Add the example data
+                        worksheet.Cell(2, 1).Value = "bbb";
+                        worksheet.Cell(2, 2).Value = "bbb";
+                        worksheet.Cell(2, 3).Value = "bb@email.com";
+                        worksheet.Cell(2, 4).Value = "Domsod";
+                        worksheet.Cell(2, 5).Value = "Kozepso ut 2";
+                        worksheet.Cell(2, 6).Value = "2344";
+                        worksheet.Cell(2, 7).Value = "C279C8B7-574B-4ABF-BD41-9A27DFBD4D34,C279C8B7-574B-4ABF-BD41-9A27DFBD4D34";
+                        worksheet.Cell(2, 8).Value = "2,1";
+
+                        // Save the workbook to the selected file path
+                        workbook.SaveAs(saveFileDialog.FileName);
+
+                        // Optionally show a message to the user that the file is saved
+                        MessageBox.Show($"Excel file saved at: {saveFileDialog.FileName}");
+                    }
+                }
+            }
+        }
     }
 }
