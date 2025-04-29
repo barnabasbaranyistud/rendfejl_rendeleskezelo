@@ -27,7 +27,7 @@ namespace Rendeleskezelo
             string username = txtUsername.Text;
             string password = txtPassword.Text;
 
-            if (username == "a" && password == "a")
+            if (username == "admin" && password == "admin")
             {
                 this.DialogResult = DialogResult.OK;
             }
