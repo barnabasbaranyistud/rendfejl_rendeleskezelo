@@ -1,5 +1,4 @@
 ﻿using ClosedXML.Excel;
-using DocumentFormat.OpenXml.Spreadsheet;
 using Hotcakes.CommerceDTO.v1;
 using Hotcakes.CommerceDTO.v1.Catalog;
 using Hotcakes.CommerceDTO.v1.Client;
@@ -7,11 +6,9 @@ using Hotcakes.CommerceDTO.v1.Contacts;
 using Hotcakes.CommerceDTO.v1.Orders;
 using System;
 using System.Collections.Generic;
-using System.Drawing;
-using System.IO;
+using System.ComponentModel;
 using System.Linq;
 using System.Windows.Forms;
-using System.Windows.Forms.VisualStyles;
 
 namespace Rendeleskezelo
 {
@@ -51,16 +48,19 @@ namespace Rendeleskezelo
             string filterCustomerName = textBoxCustomerName.Text.Trim().ToLower();
             string selectedStatus = comboBoxStatus.SelectedItem?.ToString().Trim().ToLower() ?? "";
 
-            var filteredOrders = response.Content
+            BindingList<OrderDTO> filteredOrders = new BindingList<OrderDTO>(
+                response.Content
                     .Where(order => !string.IsNullOrEmpty(order.StatusName) &&
                                     (string.IsNullOrEmpty(filterCustomerName) ||
                                      (order.BillingAddress.FirstName + " " + order.BillingAddress.LastName).ToLower().Contains(filterCustomerName)) &&
                                     (string.IsNullOrEmpty(selectedStatus) ||
                                      order.StatusName.ToLower().Contains(selectedStatus)))
                     .Select(order => new OrderDTO(order))  // Map to custom DTO
-                    .ToList();
+                    .ToList()
+            );
 
             orderDTOBindingSource.DataSource = filteredOrders;
+
         }
 
         private void ShowStatusMessage(string message)
@@ -138,6 +138,10 @@ namespace Rendeleskezelo
 
         private void buttonDelOrder_Click(object sender, EventArgs e)
         {
+            if(MessageBox.Show("Biztosan törölni szeretné a rendelést?", "Törlés megerősítése", MessageBoxButtons.YesNo, MessageBoxIcon.Warning) == DialogResult.No)
+            {
+                return;
+            }
             // Ellenőrzés, hogy van-e aktuálisan kiválasztott rendelés
             if (orderDTOBindingSource.Current is OrderDTO selectedOrder)
             {
@@ -289,6 +293,18 @@ namespace Rendeleskezelo
 
         private void MainForm_Load(object sender, EventArgs e)
         {
+        }
+
+        private void dataGridViewOrders_ColumnHeaderMouseClick(object sender, DataGridViewCellMouseEventArgs e)
+        {
+            string columnName = dataGridViewOrders.Columns[e.ColumnIndex].DataPropertyName;
+            var direction = ListSortDirection.Ascending;
+
+            // Optional: toggle direction if already sorted
+            if (orderDTOBindingSource.Sort == $"{columnName} ASC")
+                direction = ListSortDirection.Descending;
+
+            orderDTOBindingSource.Sort = $"{columnName} {(direction == ListSortDirection.Ascending ? "ASC" : "DESC")}";
         }
     }
 }
