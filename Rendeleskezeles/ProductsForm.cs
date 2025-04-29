@@ -107,7 +107,7 @@ namespace Rendeleskezeles
             Api proxy = ApiHivas();
             var response = proxy.OrdersFind(orderId);
             var originalOrder = response.Content;
-            if (numericQuantity.Value <= 0)
+            if (numericQuantity.Value <= 0 || numericQuantity.Value % 1 != 0)
             {
                 MessageBox.Show("Kérjük, adjon meg egy érvényes mennyiséget a termékhez.");
                 return;
