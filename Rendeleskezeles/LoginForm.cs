@@ -3,6 +3,7 @@ using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
+using System.Configuration;
 using System.Data;
 using System.Data.SqlClient;
 using System.Drawing;
@@ -27,7 +28,10 @@ namespace Rendeleskezelo
             string username = txtUsername.Text;
             string password = txtPassword.Text;
 
-            if (username == "admin" && password == "admin")
+            string correctUsername = ConfigurationManager.AppSettings["Username"];
+            string correctPassword = ConfigurationManager.AppSettings["Password"];
+
+            if (username == correctUsername && password == correctPassword)
             {
                 this.DialogResult = DialogResult.OK;
             }
@@ -35,35 +39,6 @@ namespace Rendeleskezelo
             {
                 lblError.Text = "Hibás név vagy jelszó.";
                 lblError.Visible = true;
-            }
-        }
-
-        public async Task<bool> LoginAsync(string username, string password)
-        {
-            var loginRequest = new
-            {
-                Username = username,
-                Password = password
-            };
-
-            using (var client = new HttpClient())
-            {
-                var content = new StringContent(JsonConvert.SerializeObject(loginRequest), Encoding.UTF8, "application/json");
-
-                var response = await client.PostAsync("http://rendfejl10001.northeurope.cloudapp.azure.com:8080/api/login", content);
-
-                if (response.IsSuccessStatusCode)
-                {
-                    var responseContent = await response.Content.ReadAsStringAsync();
-                    var token = JsonConvert.DeserializeObject<dynamic>(responseContent).Token;
-                    // Token elmentése, például a felhasználó munkamenetéhez
-                    return true;
-                }
-                else
-                {
-                    MessageBox.Show("Invalid username or password.");
-                    return false;
-                }
             }
         }
 
