@@ -14,6 +14,9 @@ namespace Rendeleskezelo
 {
     public partial class MainForm : Form
     {
+        List<string> items = new List<string>();
+        List<int> quantities = new List<int>();
+        string orderId = string.Empty;
         public MainForm()
         {
             InitializeComponent();
@@ -21,6 +24,7 @@ namespace Rendeleskezelo
             dataGridViewOrders.DataSource = orderDTOBindingSource;
             BetoltesRendelesek();
             PopulateStatusComboBoxFromApi();
+            orderId = ((OrderDTO)orderDTOBindingSource.Current).bvin;
         }
 
 
@@ -60,6 +64,7 @@ namespace Rendeleskezelo
             );
 
             orderDTOBindingSource.DataSource = filteredOrders;
+            LoadOrders(proxy);
 
         }
 
@@ -360,6 +365,39 @@ namespace Rendeleskezelo
                     }
                 }
             }
+        }
+
+        private void listBoxProducts_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            int selectedIndex = listBoxProducts.SelectedIndex;
+
+            if (selectedIndex >= 0 && selectedIndex < quantities.Count)
+            {
+                labelQuantity.Text = $"Mennyiség: {quantities[selectedIndex]}";
+            }
+            else
+            {
+                labelQuantity.Text = "";
+            }
+        }
+
+        private void LoadOrders(Api proxy)
+        {
+            orderId = ((OrderDTO)orderDTOBindingSource.Current).bvin;
+            var order = proxy.OrdersFind(orderId);
+
+            items = order.Content.Items.Select(item => item.ProductName).ToList();
+            quantities = order.Content.Items.Select(item => item.Quantity).ToList();
+            if (items != null)
+            {
+                listBoxProducts.DataSource = items;
+            }
+        }
+
+        private void dataGridViewOrders_SelectionChanged(object sender, EventArgs e)
+        {
+            Api proxy = ApiHivas();
+            LoadOrders(proxy);
         }
     }
 }
