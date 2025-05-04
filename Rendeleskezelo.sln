@@ -5,6 +5,8 @@ VisualStudioVersion = 17.12.35527.113
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Rendeleskezeles", "Rendeleskezeles\Rendeleskezeles.csproj", "{16D29FFA-829A-4583-BD20-8375A307F0C7}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "UnitTestProject1", "UnitTestProject1\UnitTestProject1.csproj", "{392A1A58-59D8-41C0-A699-286911075C58}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -15,8 +17,15 @@ Global
 		{16D29FFA-829A-4583-BD20-8375A307F0C7}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{16D29FFA-829A-4583-BD20-8375A307F0C7}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{16D29FFA-829A-4583-BD20-8375A307F0C7}.Release|Any CPU.Build.0 = Release|Any CPU
+		{392A1A58-59D8-41C0-A699-286911075C58}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{392A1A58-59D8-41C0-A699-286911075C58}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{392A1A58-59D8-41C0-A699-286911075C58}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{392A1A58-59D8-41C0-A699-286911075C58}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {411533AE-8CDF-494E-962A-FC7C1D5174AA}
 	EndGlobalSection
 EndGlobal
