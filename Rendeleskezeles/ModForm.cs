@@ -30,10 +30,10 @@ namespace Rendeleskezelo
             if (string.IsNullOrWhiteSpace(textBoxNev.Text))
                 errors.AppendLine("A vevő neve kötelező.");
 
-            if (string.IsNullOrWhiteSpace(textBoxEmail.Text) || !IsValidEmail(textBoxEmail.Text))
+            if (!ValidationHelper.IsValidEmail(textBoxEmail.Text))
                 errors.AppendLine("Érvényes e-mail cím megadása kötelező.");
 
-            if (dateTimePickerDatum.Value.Date > DateTime.Now.Date)
+            if (!ValidationHelper.IsValidOrderDate(dateTimePickerDatum.Value))
                 errors.AppendLine("A rendelés dátuma nem lehet jövőbeli időpont.");
 
             if (comboBoxStatusz.SelectedIndex < 0)
@@ -42,10 +42,8 @@ namespace Rendeleskezelo
             if (string.IsNullOrWhiteSpace(textBoxSzallítasiCim.Text))
                 errors.AppendLine("A szállítási cím megadása kötelező.");
 
-            if (!IsValidAddress(textBoxSzallítasiCim.Text))
-            {
+            if (!ValidationHelper.IsValidAddress(textBoxSzallítasiCim.Text))
                 errors.AppendLine("A szállítási cím nem megfelelő formátumú. Példa: 'Fővám tér 8, Budapest, Hungary, 1098'");
-            }
 
             if (errors.Length > 0)
             {
@@ -55,6 +53,7 @@ namespace Rendeleskezelo
 
             return true;
         }
+
 
         private bool IsValidAddress(string address)
         {
