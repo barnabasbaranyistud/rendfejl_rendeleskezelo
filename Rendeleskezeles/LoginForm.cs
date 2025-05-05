@@ -1,5 +1,6 @@
 ﻿using Hotcakes.CommerceDTO.v1.Client;
 using Newtonsoft.Json;
+using Rendeleskezeles;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -31,7 +32,9 @@ namespace Rendeleskezelo
             string correctUsername = ConfigurationManager.AppSettings["Username"];
             string correctPassword = ConfigurationManager.AppSettings["Password"];
 
-            if (username == correctUsername && password == correctPassword)
+            var authService = new AuthService(correctUsername, correctPassword);
+
+            if (authService.Authenticate(username, password))
             {
                 this.DialogResult = DialogResult.OK;
             }
