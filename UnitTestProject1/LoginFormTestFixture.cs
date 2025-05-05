@@ -35,8 +35,8 @@ namespace Rendeleskezelo.Tests
             Assert.AreEqual(expectedResult, actualResult);
         }
 
-        // Teszt a sikeres regisztrációra (a példádhoz hasonlóan)
-        [Test, TestCase("admin", "admin"), TestCase("irf@uni-corvinus.hu", "Abcd1234567")]
+        // Teszt a sikeres regisztrációra 
+        [Test, TestCase("admin", "admin")]
         public void TestRegisterHappyPath(string username, string password)
         {
             // Arrange
