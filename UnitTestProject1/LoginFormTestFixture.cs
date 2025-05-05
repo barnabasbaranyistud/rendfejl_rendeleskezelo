@@ -1,43 +1,52 @@
 ﻿using NUnit.Framework;
+using Rendeleskezeles;
 using Rendeleskezelo;
-using System.ComponentModel;
-using System.Configuration;
 
 namespace Rendeleskezelo.Tests
 {
     [TestFixture]
-    public class LoginFormTests
+    public class LoginFormTestFixture
     {
-        private LoginForm loginForm;
-
-        [SetUp]
-        public void SetUp()
+        // Teszt a felhasználónév érvényességére
+        [Test, TestCase("admi", false), TestCase("adm", false), TestCase("ADMIN", false), TestCase("admin", true)]
+        public void TestValidateUsername(string username, bool expectedResult)
         {
-            // Set up a new instance of the form before each test
-            loginForm = new LoginForm();
+            // Arrange
+            var authService = new AuthService("admin", "admin");
+
+            // Act
+            var actualResult = authService.Authenticate(username, "admin");
+
+            // Assert
+            Assert.AreEqual(expectedResult, actualResult);
         }
 
-        [Test]
-        [TestCase("admin", "admin", DialogResult.OK)]  // Correct credentials
-        [TestCase("admin", "wrongpassword", DialogResult.Cancel)]  // Incorrect password
-        public void TestLoginForm(string username, string password, DialogResult expectedDialogResult)
+        // Teszt a jelszó érvényességére
+        [Test, TestCase("admi", false), TestCase("ADMIN", false), TestCase("admi1", false), TestCase("adMin", false), TestCase("AdmIn", false), TestCase("admin", true)]
+        public void TestValidatePassword(string password, bool expectedResult)
         {
-            // Arrange: Set the username and password
-            loginForm.txtUsername.Text = username;
-            loginForm.txtPassword.Text = password;
+            // Arrange
+            var authService = new AuthService("admin", "admin");
 
-            // Act: Simulate button click
-            loginForm.buttonLogin.PerformClick();
+            // Act
+            var actualResult = authService.Authenticate("admin", password);
 
-            // Assert: Check if the dialog result matches the expected result
-            Assert.AreEqual(expectedDialogResult, loginForm.DialogResult);
+            // Assert
+            Assert.AreEqual(expectedResult, actualResult);
         }
 
-        [TearDown]
-        public void TearDown()
+        // Teszt a sikeres regisztrációra (a példádhoz hasonlóan)
+        [Test, TestCase("admin", "admin"), TestCase("irf@uni-corvinus.hu", "Abcd1234567")]
+        public void TestRegisterHappyPath(string username, string password)
         {
-            // Clean up after each test
-            loginForm.Dispose();
+            // Arrange
+            var authService = new AuthService("admin", "admin");
+
+            // Act
+            var result = authService.Authenticate(username, password);
+
+            // Assert
+            Assert.IsTrue(result);
         }
     }
 }
