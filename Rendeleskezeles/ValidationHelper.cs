@@ -13,9 +13,8 @@ namespace Rendeleskezeles
         {
             if (string.IsNullOrWhiteSpace(email))
                 return false;
-
-            var pattern = @"^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$";
-            return Regex.IsMatch(email, pattern);
+            var pattern = @"^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9-]+\.[a-zA-Z]{2,}$";
+            return Regex.IsMatch(email, pattern, RegexOptions.None);
         }
 
         public static bool IsValidAddress(string address)

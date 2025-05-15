@@ -63,15 +63,10 @@ namespace Rendeleskezelo
 
         private bool IsValidEmail(string email)
         {
-            try
-            {
-                var addr = new System.Net.Mail.MailAddress(email);
-                return addr.Address == email;
-            }
-            catch
-            {
+            if (string.IsNullOrWhiteSpace(email))
                 return false;
-            }
+            var pattern = @"^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9-]+\.[a-zA-Z]{2,}$";
+            return Regex.IsMatch(email, pattern, RegexOptions.None);
         }
 
         public void PopulateStatusComboBox(List<string> items)

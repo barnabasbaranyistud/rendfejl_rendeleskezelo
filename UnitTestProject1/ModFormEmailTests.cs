@@ -1,9 +1,11 @@
 ﻿using NUnit.Framework;
+using Rendeleskezeles;
 using Rendeleskezelo;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Reflection;
+using System.Text.RegularExpressions;
 using System.Windows.Forms;
 
 namespace RendeleskezeloTests
@@ -58,9 +60,12 @@ namespace RendeleskezeloTests
 
         // Email validálás tesztje
         [TestCase("abcd1234", false)]
-        [TestCase("irf@@uni-corvinus.", false)]
+        [TestCase("irf@@uni-corvinus", false)]
         [TestCase("irf.uni-corvinus.hu", false)]
         [TestCase("irf@uni-corvinus.hu", true)]
+        [TestCase("irf@corvinus.hu", true)]
+        [TestCase("irf@@uni-corvinus.", false)]
+        [TestCase("irf@uni-corvinus", false)]
         public void TestValidateEmail(string email, bool expectedResult)
         {
             // Act
@@ -116,5 +121,6 @@ namespace RendeleskezeloTests
             var method = typeof(ModForm).GetMethod("IsValidAddress", BindingFlags.NonPublic | BindingFlags.Instance);
             return (bool)method.Invoke(_form, new object[] { address });
         }
+
     }
 }
